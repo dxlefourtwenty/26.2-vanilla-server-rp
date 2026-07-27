@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "vanilla:entities/happy_ghast"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "mobs_drop_eggs:entities/happy_ghast"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

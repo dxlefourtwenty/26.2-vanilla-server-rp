@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "vanilla:entities/tadpole"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "mobs_drop_eggs:entities/tadpole"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "more_mob_heads:entities/tadpole"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

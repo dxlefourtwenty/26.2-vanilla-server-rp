@@ -1,0 +1,23 @@
+{
+  "pack": {
+    "min_format": [
+      107,
+      1
+    ],
+    "max_format": [
+      107,
+      1
+    ],
+    "description": [
+      {
+        "text": "Mobs Drop Eggs",
+        "color": "light_purple"
+      },
+      {
+        "text": "\nUse Looting, Get Eggs",
+        "color": "dark_purple"
+      }
+    ]
+  },
+  "id": "mobs-drop-eggs"
+}
