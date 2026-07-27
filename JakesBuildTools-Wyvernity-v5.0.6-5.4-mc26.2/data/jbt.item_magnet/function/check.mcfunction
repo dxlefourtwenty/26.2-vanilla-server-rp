@@ -1,1 +1,0 @@
-execute if predicate jbt.item_magnet:magnet at @s run function jbt.item_magnet:effect

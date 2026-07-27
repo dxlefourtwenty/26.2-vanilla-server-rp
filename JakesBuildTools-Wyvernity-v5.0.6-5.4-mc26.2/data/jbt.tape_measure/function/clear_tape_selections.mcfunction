@@ -1,1 +1,0 @@
-kill @e[type=minecraft:item_display, tag=jbt.tape_selection]

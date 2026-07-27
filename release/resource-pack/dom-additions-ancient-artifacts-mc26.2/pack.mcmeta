@@ -1,0 +1,23 @@
+{
+  "pack": {
+    "min_format": [
+      88,
+      0
+    ],
+    "max_format": [
+      88,
+      0
+    ],
+    "description": [
+      {
+        "text": "Dom Additions + Ancient Artifacts 2",
+        "color": "#04b9ff"
+      },
+      {
+        "text": "\nMinecraft 26.2 server resources",
+        "color": "gray"
+      }
+    ]
+  },
+  "id": "dom-additions-ancient-artifacts"
+}

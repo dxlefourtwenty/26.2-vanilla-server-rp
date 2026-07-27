@@ -1,1 +1,0 @@
-function dcf:toggle {enabled: true}

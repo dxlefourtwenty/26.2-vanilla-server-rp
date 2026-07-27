@@ -1,1 +1,0 @@
-return run function jbt.chisel:check/same_macro with storage jbt:temp chisel

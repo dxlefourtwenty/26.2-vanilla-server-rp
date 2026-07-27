@@ -1,1 +1,0 @@
-$execute if entity @s[gamemode=!creative] run clear @s $(chosen_block) 1

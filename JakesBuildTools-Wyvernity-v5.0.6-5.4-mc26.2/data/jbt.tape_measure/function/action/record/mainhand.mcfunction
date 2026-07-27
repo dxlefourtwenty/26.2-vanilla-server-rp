@@ -1,2 +1,0 @@
-$item modify entity @s weapon.mainhand [{"function":"minecraft:set_custom_data","tag":{jbt:{id:"tape_measure",open:false}}},{"function": "minecraft:set_lore","entity": "this","lore": [{"text": "$(dimensions)","color":"blue","italic":false},{"translate":"jbt.tooltip","font":"jbt:tooltip","color":"white","italic":false}],"mode": "replace_all"},{"function":"minecraft:set_components","components":{"minecraft:item_model":"jbt:tape_measure_in"}}]
-$title @s actionbar {"text": "$(dimensions)"}

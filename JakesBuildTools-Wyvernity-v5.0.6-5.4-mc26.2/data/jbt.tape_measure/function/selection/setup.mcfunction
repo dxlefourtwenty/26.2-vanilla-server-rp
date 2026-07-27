@@ -1,2 +1,0 @@
-data merge entity @s {Tags: ["jbt.tape_selection", "smithed.entity", "smithed.strict"], item: {id: "cobblestone", components: {"minecraft:item_model": "jbt:selection"}}, view_range: 0.5d, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.01f, 1.01f, 1.01f], translation: [0.0f, 0.0f, 0.0f]}, brightness: {sky: 11, block: 11}}
-scoreboard players operation @s jbt.id = $id jbt.dummy

@@ -1,1 +1,0 @@
-$setblock ~ ~ ~ $(chosen_block)[persistent=true] replace

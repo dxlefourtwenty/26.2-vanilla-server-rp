@@ -1,0 +1,23 @@
+{
+  "pack": {
+    "min_format": [
+      107,
+      1
+    ],
+    "max_format": [
+      107,
+      1
+    ],
+    "description": [
+      {
+        "text": "Server Compatibility Fixes",
+        "color": "gold"
+      },
+      {
+        "text": "\nMinecraft 26.2",
+        "color": "gray"
+      }
+    ]
+  },
+  "id": "server-compatibility-fixes"
+}

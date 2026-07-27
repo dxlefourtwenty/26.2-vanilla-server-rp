@@ -1,0 +1,9 @@
+Thanks for downloading.
+
+To use dom-additions.zip as both a data pack and resource pack:
+
+1. Copy dom-additions.zip into the world's datapacks folder.
+
+2. Copy the same dom-additions.zip into the .minecraft/resourcepacks folder.
+
+3. Enable "Dom Additions + Jake's Build Tools" in Options > Resource Packs.

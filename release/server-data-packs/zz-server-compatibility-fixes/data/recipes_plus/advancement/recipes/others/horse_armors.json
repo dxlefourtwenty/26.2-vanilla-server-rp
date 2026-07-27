@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "riding_horse": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:entity_type": "minecraft:horse"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "recipes_plus:others/horse_armor/horse_armor_iron",
+      "recipes_plus:others/horse_armor/horse_armor_copper",
+      "recipes_plus:others/horse_armor/horse_armor_gold",
+      "recipes_plus:others/horse_armor/horse_armor_diamond"
+    ]
+  }
+}

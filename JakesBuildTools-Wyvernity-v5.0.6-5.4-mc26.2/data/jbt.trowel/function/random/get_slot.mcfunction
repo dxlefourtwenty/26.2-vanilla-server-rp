@@ -1,1 +1,0 @@
-$return run data get storage jbt:trowel blocks[$(chosen_index)]

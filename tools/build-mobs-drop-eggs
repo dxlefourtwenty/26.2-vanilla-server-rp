@@ -1,0 +1,372 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly DEFAULT_SOURCE_ARCHIVE='MobsDropEggs v1.0.0 (MC 1.21.2-1.21.4).zip'
+readonly DEFAULT_CLIENT_JAR='/home/dxle/.local/share/PrismLauncher/libraries/com/mojang/minecraft/26.2/minecraft-26.2-client.jar'
+readonly DEFAULT_OUTPUT_DIRECTORY='MobsDropEggs v1.0.0 (MC 26.2-fixed)'
+readonly DEFAULT_OUTPUT_ARCHIVE='MobsDropEggs v1.0.0 (MC 26.2-fixed).zip'
+readonly DEFAULT_BASE_CHANCE='0.03'
+readonly DEFAULT_CHANCE_PER_LEVEL='0.015'
+readonly DEFAULT_DATA_FORMAT='107.1'
+
+source_archive=$DEFAULT_SOURCE_ARCHIVE
+client_jar=$DEFAULT_CLIENT_JAR
+output_directory=$DEFAULT_OUTPUT_DIRECTORY
+output_archive=$DEFAULT_OUTPUT_ARCHIVE
+base_chance=$DEFAULT_BASE_CHANCE
+chance_per_level=$DEFAULT_CHANCE_PER_LEVEL
+data_format=$DEFAULT_DATA_FORMAT
+preserve_legacy_compatibility=false
+dry_run=false
+
+usage() {
+    /usr/bin/printf '%s\n' \
+        'Usage: tools/build-mobs-drop-eggs [options]' \
+        '' \
+        'Options:' \
+        '  --source PATH             Original MobsDropEggs archive' \
+        '  --client-jar PATH         Minecraft 26.2 client JAR' \
+        '  --output-directory PATH   Generated datapack directory' \
+        '  --output-archive PATH     Generated datapack ZIP' \
+        '  --base-chance NUMBER      Looting I chance (default: 0.03)' \
+        '  --chance-per-level NUMBER Added chance above Looting I (default: 0.015)' \
+        '  --data-format VERSION     Datapack format (default: 107.1)' \
+        '  --preserve-legacy-compatibility' \
+        '                            Keep optional loot-table references from the source' \
+        '  --dry-run                 Validate inputs and show the build summary' \
+        '  --help                    Show this help'
+}
+
+die() {
+    /usr/bin/printf 'Error: %s\n' "$1" >&2
+    exit 1
+}
+
+require_argument() {
+    [[ $# -ge 2 && -n $2 ]] || die "$1 requires a value"
+}
+
+parse_arguments() {
+    while (($#)); do
+        case $1 in
+            --source)
+                require_argument "$@"
+                source_archive=$2
+                shift 2
+                ;;
+            --client-jar)
+                require_argument "$@"
+                client_jar=$2
+                shift 2
+                ;;
+            --output-directory)
+                require_argument "$@"
+                output_directory=$2
+                shift 2
+                ;;
+            --output-archive)
+                require_argument "$@"
+                output_archive=$2
+                shift 2
+                ;;
+            --base-chance)
+                require_argument "$@"
+                base_chance=$2
+                shift 2
+                ;;
+            --chance-per-level)
+                require_argument "$@"
+                chance_per_level=$2
+                shift 2
+                ;;
+            --data-format)
+                require_argument "$@"
+                data_format=$2
+                shift 2
+                ;;
+            --preserve-legacy-compatibility)
+                preserve_legacy_compatibility=true
+                shift
+                ;;
+            --dry-run)
+                dry_run=true
+                shift
+                ;;
+            --help)
+                usage
+                exit 0
+                ;;
+            *)
+                die "unknown option: $1"
+                ;;
+        esac
+    done
+}
+
+validate_probability() {
+    local label=$1
+    local value=$2
+
+    [[ $value =~ ^(0([.][0-9]+)?|1([.]0+)?)$ ]] ||
+        die "$label must be between 0 and 1"
+}
+
+validate_inputs() {
+    [[ -f $source_archive ]] || die "source archive not found: $source_archive"
+    [[ -f $client_jar ]] || die "client JAR not found: $client_jar"
+    [[ $data_format =~ ^[0-9]+([.][0-9]+)?$ ]] ||
+        die "data format must be a number"
+    validate_probability 'base chance' "$base_chance"
+    validate_probability 'chance per level' "$chance_per_level"
+    [[ ! -e $output_directory ]] ||
+        die "output directory already exists: $output_directory"
+    [[ ! -e $output_archive ]] ||
+        die "output archive already exists: $output_archive"
+
+    /usr/bin/unzip -tq "$source_archive" >/dev/null
+    /usr/bin/unzip -tq "$client_jar" >/dev/null
+}
+
+is_grief_addon_mob() {
+    case $1 in
+        elder_guardian | ender_dragon | endermite | piglin_brute | ravager | vex | warden | wither)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+list_supported_mobs() {
+    /usr/bin/unzip -p "$client_jar" assets/minecraft/lang/en_us.json |
+        /usr/bin/jq -r '
+            keys[]
+            | select(startswith("item.minecraft.") and endswith("_spawn_egg"))
+            | sub("^item\\.minecraft\\."; "")
+            | sub("_spawn_egg$"; "")
+        ' |
+        while IFS= read -r mob_name; do
+            if ! is_grief_addon_mob "$mob_name"; then
+                /usr/bin/printf '%s\n' "$mob_name"
+            fi
+        done |
+        /usr/bin/sort
+}
+
+write_pack_metadata() {
+    /usr/bin/jq -n \
+        --arg data_format "$data_format" \
+        '{
+            pack: {
+                min_format: ($data_format | split(".") | map(tonumber)),
+                max_format: ($data_format | split(".") | map(tonumber)),
+                description: [
+                    {text: "Mobs Drop Eggs", color: "light_purple"},
+                    {text: "\nUse Looting, Get Eggs", color: "dark_purple"}
+                ]
+            },
+            id: "mobs-drop-eggs"
+        }' >"$output_directory/pack.mcmeta"
+}
+
+extract_pack_icon() {
+    /usr/bin/unzip -jq "$source_archive" pack.png -d "$output_directory"
+}
+
+write_egg_loot_table() {
+    local mob_name=$1
+    local target_path="$output_directory/data/mobs_drop_eggs/loot_table/entities/$mob_name.json"
+
+    /usr/bin/jq -n \
+        --arg mob_name "$mob_name" \
+        --argjson base_chance "$base_chance" \
+        --argjson chance_per_level "$chance_per_level" \
+        '{
+            type: "minecraft:entity",
+            pools: [
+                {
+                    conditions: [
+                        {
+                            condition: "minecraft:random_chance_with_enchanted_bonus",
+                            enchanted_chance: {
+                                type: "minecraft:linear",
+                                base: $base_chance,
+                                per_level_above_first: $chance_per_level
+                            },
+                            enchantment: "minecraft:looting",
+                            unenchanted_chance: 0
+                        }
+                    ],
+                    entries: [
+                        {
+                            type: "minecraft:item",
+                            name: ("minecraft:" + $mob_name + "_spawn_egg")
+                        }
+                    ],
+                    rolls: 1.0
+                }
+            ],
+            random_sequence: ("mobs_drop_eggs:entities/" + $mob_name)
+        }' >"$target_path"
+}
+
+legacy_compatibility_entries() {
+    local mob_name=$1
+    local legacy_path="data/minecraft/loot_table/entities/$mob_name.json"
+
+    if [[ $preserve_legacy_compatibility == false ]]; then
+        /usr/bin/printf '[]\n'
+        return
+    fi
+
+    if /usr/bin/unzip -Z1 "$source_archive" | /usr/bin/grep -Fxq "$legacy_path"; then
+        /usr/bin/unzip -p "$source_archive" "$legacy_path" |
+            /usr/bin/jq '
+                [.pools[2:][]?.entries[]]
+                | map(if .type == "loot_table" then .type = "minecraft:loot_table" else . end)
+            '
+    else
+        /usr/bin/printf '[]\n'
+    fi
+}
+
+write_wrapper_loot_table() {
+    local mob_name=$1
+    local compatibility_entries
+    local target_path="$output_directory/data/minecraft/loot_table/entities/$mob_name.json"
+
+    compatibility_entries=$(legacy_compatibility_entries "$mob_name")
+    /usr/bin/jq -n \
+        --arg mob_name "$mob_name" \
+        --argjson compatibility_entries "$compatibility_entries" \
+        '{
+            type: "minecraft:entity",
+            pools: (
+                [
+                    {
+                        entries: [
+                            {
+                                type: "minecraft:loot_table",
+                                value: ("vanilla:entities/" + $mob_name)
+                            }
+                        ],
+                        rolls: 1.0
+                    },
+                    {
+                        entries: [
+                            {
+                                type: "minecraft:loot_table",
+                                value: ("mobs_drop_eggs:entities/" + $mob_name)
+                            }
+                        ],
+                        rolls: 1.0
+                    }
+                ]
+                + ($compatibility_entries | map({entries: [.], rolls: 1.0}))
+            )
+        }' >"$target_path"
+}
+
+copy_vanilla_loot_table() {
+    local mob_name=$1
+    local source_path="data/minecraft/loot_table/entities/$mob_name.json"
+    local target_path="$output_directory/data/vanilla/loot_table/entities/$mob_name.json"
+
+    /usr/bin/unzip -p "$client_jar" "$source_path" >"$target_path"
+    [[ -s $target_path ]] || die "26.2 vanilla loot table not found for $mob_name"
+}
+
+prepare_directories() {
+    /usr/bin/mkdir -p \
+        "$output_directory/data/minecraft/loot_table/entities" \
+        "$output_directory/data/mobs_drop_eggs/loot_table/entities" \
+        "$output_directory/data/vanilla/loot_table/entities"
+}
+
+build_pack() {
+    local mob_name
+
+    prepare_directories
+    write_pack_metadata
+    extract_pack_icon
+
+    while IFS= read -r mob_name; do
+        copy_vanilla_loot_table "$mob_name"
+        write_egg_loot_table "$mob_name"
+        write_wrapper_loot_table "$mob_name"
+    done < <(list_supported_mobs)
+}
+
+validate_pack() {
+    local expected_count
+    local namespace
+    local actual_count
+
+    expected_count=$(list_supported_mobs | /usr/bin/wc -l)
+    for namespace in minecraft mobs_drop_eggs vanilla; do
+        actual_count=$(
+            /usr/bin/find "$output_directory/data/$namespace/loot_table/entities" \
+                -type f -name '*.json' |
+                /usr/bin/wc -l
+        )
+        [[ $actual_count -eq $expected_count ]] ||
+            die "$namespace has $actual_count entity tables; expected $expected_count"
+    done
+
+    /usr/bin/find "$output_directory" -type f -name '*.json' -print0 |
+        /usr/bin/xargs -0 /usr/bin/jq -e . >/dev/null
+    /usr/bin/jq -e \
+        --argjson base_chance "$base_chance" \
+        --argjson chance_per_level "$chance_per_level" \
+        '
+            [
+                .pools[0].conditions[0]
+                | .enchanted_chance.base == $base_chance,
+                  .enchanted_chance.per_level_above_first == $chance_per_level,
+                  .unenchanted_chance == 0
+            ]
+            | all
+        ' "$output_directory/data/mobs_drop_eggs/loot_table/entities/"*.json >/dev/null
+}
+
+create_archive() {
+    local archive_path
+
+    archive_path=$(/usr/bin/realpath -m "$output_archive")
+    (
+        cd "$output_directory"
+        /usr/bin/zip -qr "$archive_path" .
+    )
+    /usr/bin/unzip -tq "$output_archive" >/dev/null
+}
+
+print_summary() {
+    local mob_count
+
+    mob_count=$(list_supported_mobs | /usr/bin/wc -l)
+    /usr/bin/printf \
+        'Mobs: %d\nData format: %s\nLooting I chance: %s\nChance per additional level: %s\nLegacy compatibility: %s\nOutput: %s\n' \
+        "$mob_count" \
+        "$data_format" \
+        "$base_chance" \
+        "$chance_per_level" \
+        "$preserve_legacy_compatibility" \
+        "$output_archive"
+}
+
+main() {
+    parse_arguments "$@"
+    validate_inputs
+    print_summary
+
+    if [[ $dry_run == true ]]; then
+        return
+    fi
+
+    build_pack
+    validate_pack
+    create_archive
+}
+
+main "$@"

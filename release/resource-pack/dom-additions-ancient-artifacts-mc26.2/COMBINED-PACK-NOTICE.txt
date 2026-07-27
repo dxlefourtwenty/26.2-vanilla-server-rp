@@ -1,0 +1,13 @@
+Combined locally for Minecraft 26.2 from:
+
+Dom Additions
+The original copyright, terms, installation, and credits files are included at
+this archive's root. Its bundled Terms of Use prohibit third-party download
+links and reposted downloads.
+
+Ancient Artifacts 2 Resourcepack V2.5.5g
+https://modrinth.com/datapack/ancient-artifacts-2
+Copyright theblackswitch. Published under CC BY-NC-ND 4.0.
+https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+This notice does not grant redistribution or derivative-work permission.
