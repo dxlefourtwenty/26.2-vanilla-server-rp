@@ -1,0 +1,1 @@
+return run clear @s *[minecraft:custom_data~{jbt: {id: "void_bundle"}}, !minecraft:bundle_contents=[]] 0

@@ -1,0 +1,28 @@
+{
+  "pack": {
+    "description": [
+      [
+        {
+          "text": "\u26cf Jake's Build Tools + Wyvernity \u26cf",
+          "color": "#04b9ff"
+        },
+        {
+          "text": "\n"
+        },
+        {
+          "text": "Build tools and datapack resources",
+          "color": "#7e7e7e"
+        }
+      ]
+    ],
+    "min_format": [
+      88,
+      0
+    ],
+    "max_format": [
+      88,
+      0
+    ]
+  },
+  "id": "jakes-build-tools-wyvernity"
+}
