@@ -1,0 +1,143 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+script_directory=$(/usr/bin/dirname "$(/usr/bin/readlink -f "${BASH_SOURCE[0]}")")
+repository_root=$(/usr/bin/dirname "$script_directory")
+override_root="$script_directory/enchantment-plus-size-disabled/overrides"
+source_archive="$repository_root/data-packs/enchantment-plus-v5-4_mc-26-2.zip"
+output_archive="$repository_root/release/server-data-packs/Enchantment Plus v5.4 MC 26.2 (size enchantments disabled).zip"
+dry_run=false
+force=false
+
+usage() {
+  /usr/bin/printf '%s\n' \
+    "Usage: $0 [--source ARCHIVE] [--output ARCHIVE] [--dry-run] [--force]" \
+    "" \
+    "Builds Enchantment Plus with Enlarged and Shrinked disabled."
+}
+
+fail() {
+  /usr/bin/printf 'error: %s\n' "$1" >&2
+  exit 1
+}
+
+require_command() {
+  command -v "$1" >/dev/null 2>&1 || fail "required command not found: $1"
+}
+
+parse_arguments() {
+  while (($#)); do
+    case "$1" in
+      --source)
+        (($# >= 2)) || fail "--source requires a path"
+        source_archive=$2
+        shift 2
+        ;;
+      --output)
+        (($# >= 2)) || fail "--output requires a path"
+        output_archive=$2
+        shift 2
+        ;;
+      --dry-run)
+        dry_run=true
+        shift
+        ;;
+      --force)
+        force=true
+        shift
+        ;;
+      --help|-h)
+        usage
+        exit 0
+        ;;
+      *)
+        fail "unknown argument: $1"
+        ;;
+    esac
+  done
+}
+
+validate_inputs() {
+  source_archive=$(/usr/bin/readlink -f "$source_archive")
+  output_archive=$(/usr/bin/readlink -m "$output_archive")
+
+  [[ -f "$source_archive" ]] || fail "source archive not found: $source_archive"
+  [[ -d "$override_root" ]] || fail "override directory not found: $override_root"
+  [[ "$source_archive" != "$output_archive" ]] || fail "source and output archives must differ"
+  [[ ! -e "$output_archive" || "$force" == true ]] || fail "output already exists: $output_archive"
+
+  require_command cp
+  require_command dirname
+  require_command find
+  require_command jq
+  require_command mkdir
+  require_command readlink
+  require_command sed
+  require_command sort
+  require_command unzip
+  require_command uniq
+  require_command zip
+  require_command zipinfo
+}
+
+list_overrides() {
+  (
+    cd "$override_root"
+    /usr/bin/find . -type f -printf '%P\n' | /usr/bin/sort
+  )
+}
+
+validate_json_files() {
+  local archive=$1
+  local entry
+
+  while IFS= read -r entry; do
+    unzip -p "$archive" "$entry" | jq -e . >/dev/null
+  done < <(zipinfo -1 "$archive" | while IFS= read -r entry; do
+    [[ "$entry" == *.json || "$entry" == pack.mcmeta ]] && /usr/bin/printf '%s\n' "$entry"
+  done)
+}
+
+validate_archive() {
+  local archive=$1
+  local duplicate_entries
+
+  unzip -tq "$archive" >/dev/null
+  validate_json_files "$archive"
+
+  duplicate_entries=$(zipinfo -1 "$archive" | /usr/bin/sort | /usr/bin/uniq -d)
+  [[ -z "$duplicate_entries" ]] || fail "duplicate ZIP entries detected"
+}
+
+build_archive() {
+  local output_directory
+  local -a override_entries
+
+  output_directory=$(/usr/bin/dirname "$output_archive")
+  /usr/bin/mkdir -p "$output_directory"
+  /usr/bin/cp "$source_archive" "$output_archive"
+  mapfile -t override_entries < <(list_overrides)
+
+  (
+    cd "$override_root"
+    zip -q "$output_archive" "${override_entries[@]}"
+  )
+
+  validate_archive "$output_archive"
+}
+
+main() {
+  parse_arguments "$@"
+  validate_inputs
+
+  if [[ "$dry_run" == true ]]; then
+    /usr/bin/printf 'source: %s\noutput: %s\noverrides:\n' "$source_archive" "$output_archive"
+    list_overrides | /usr/bin/sed 's/^/  /'
+    exit 0
+  fi
+
+  build_archive
+  /usr/bin/printf '%s\n' "$output_archive"
+}
+
+main "$@"

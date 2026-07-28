@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:notice",
+  "title": "Enlarged",
+  "body": [
+    {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "text": "This enchantment is disabled on this server.",
+        "color": "red"
+      }
+    }
+  ]
+}
