@@ -1,0 +1,89 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:custom_model_data",
+    "cases": [
+      {
+        "when": "tasty_supplies/netherite_knife",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/netherite_knife"
+        }
+      },
+      {
+        "when": "tasty_supplies/golden_knife",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/golden_knife"
+        }
+      },
+      {
+        "when": "tasty_supplies/iron_knife",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/iron_knife"
+        }
+      },
+      {
+        "when": "tasty_supplies/copper_knife",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/copper_knife"
+        }
+      },
+      {
+        "when": "tasty_supplies/flint_knife",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/flint_knife"
+        }
+      },
+      {
+        "when": "tasty_supplies/netherite_cleaver",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/netherite_cleaver"
+        }
+      },
+      {
+        "when": "tasty_supplies/golden_cleaver",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/golden_cleaver"
+        }
+      },
+      {
+        "when": "tasty_supplies/iron_cleaver",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/iron_cleaver"
+        }
+      },
+      {
+        "when": "tasty_supplies/copper_cleaver",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/copper_cleaver"
+        }
+      },
+      {
+        "when": "tasty_supplies/stone_cleaver",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/stone_cleaver"
+        }
+      },
+      {
+        "when": "tasty_supplies/wooden_cleaver",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/wooden_cleaver"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/wooden_sword"
+    }
+  }
+}

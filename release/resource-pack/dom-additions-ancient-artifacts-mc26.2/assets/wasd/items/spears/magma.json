@@ -1,0 +1,26 @@
+{
+  "oversized_in_gui": true,
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "wasd:item/spears/magma"
+        },
+        "when": [
+          "gui",
+          "ground",
+          "fixed",
+          "on_shelf"
+        ]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "wasd:item/spears/magma_hand"
+    },
+    "property": "minecraft:display_context"
+  },
+  "swap_animation_scale": 1.9
+}

@@ -1,0 +1,27 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "wasd:item/hoes/big"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, -90, 55],
+			"translation": [0, 6.75, -4.25],
+			"scale": [1.43, 1.43, 1.43]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 90, -55],
+			"translation": [0, 6.75, -4.25],
+			"scale": [1.43, 1.43, 1.43]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 64],
+			"translation": [1.13, 7.2, -0.37]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 90, -64],
+			"translation": [1.13, 7.2, -0.37]
+		}
+	}
+}

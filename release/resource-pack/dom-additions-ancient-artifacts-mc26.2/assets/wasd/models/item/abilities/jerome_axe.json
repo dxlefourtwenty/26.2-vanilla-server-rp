@@ -1,0 +1,13 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "item/diamond_axe"
+	},
+	"display": {
+		"head": {
+			"rotation": [-131, -90, 0],
+			"scale": [1.58984, 1.58984, 1.58984]
+		}
+	}
+}

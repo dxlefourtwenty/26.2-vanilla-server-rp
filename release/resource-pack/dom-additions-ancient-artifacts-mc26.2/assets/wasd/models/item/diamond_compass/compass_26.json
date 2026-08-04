@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wasd:item/diamond_compass/compass_26"
+  }
+}

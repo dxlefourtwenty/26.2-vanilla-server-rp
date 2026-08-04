@@ -1,0 +1,15 @@
+Foods Plus for Minecraft 26.2
+
+The recipes, item textures, and original food behavior were adapted from
+Klei's Matcha Flavoured 1.01 for Minecraft 26.2.
+
+Matcha Flavoured replaces hunger restoration with short, high-amplifier
+Regeneration effects. Foods Plus removes only those short healing bursts and
+converts the displayed healing amount into conventional hunger points, capped
+at 10. Saturation is 0.6 per hunger point. Other effects are preserved.
+
+All custom foods use a poisonous potato carrier with their own item model and
+components. Recipes use ordinary survival ingredients and do not consume
+Matcha's repurposed spawn eggs or other hidden carrier items.
+
+The original Matcha Flavoured credits are included in this archive.

@@ -1,0 +1,67 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"0": "wasd:item/vanilla_assets/black_concrete",
+		"1": "wasd:item/abilities/dark_teeth",
+		"particle": "wasd:item/vanilla_assets/black_concrete"
+	},
+	"elements": [
+		{
+			"from": [4, 10, 5.5],
+			"to": [12, 26, 7.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 3.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 2, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 8, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 2, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 8, 2], "texture": "#0"},
+				"down": {"uv": [0, 0, 8, 2], "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 10, 7.5],
+			"to": [12, 26, 11.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 3.5]},
+			"faces": {
+				"east": {"uv": [16, 0, 12, 16], "texture": "#1"},
+				"west": {"uv": [4, 0, 0, 16], "texture": "#1"},
+				"up": {"uv": [4, 4, 12, 0], "texture": "#1"}
+			}
+		},
+		{
+			"from": [3, 6, 4.5],
+			"to": [13, 10, 11.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 0.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 10, 4], "texture": "#0"},
+				"east": {"uv": [0, 0, 7, 4], "texture": "#0"},
+				"south": {"uv": [0, 0, 10, 4], "texture": "#0"},
+				"west": {"uv": [0, 0, 7, 4], "texture": "#0"},
+				"up": {"uv": [0, 0, 10, 7], "texture": "#0"},
+				"down": {"uv": [0, 0, 10, 7], "texture": "#0"}
+			}
+		},
+		{
+			"name": "cube inverted",
+			"from": [12, 26, 11.5],
+			"to": [4, 10, 7.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 3.5]},
+			"faces": {
+				"east": {"uv": [4, 16, 0, 0], "texture": "#1"},
+				"west": {"uv": [16, 16, 12, 0], "texture": "#1"},
+				"down": {"uv": [12, 4, 4, 0], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"head": {
+			"scale": [2, 2, 2]
+		},
+		"fixed": {
+			"rotation": [0, 90, 0],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}

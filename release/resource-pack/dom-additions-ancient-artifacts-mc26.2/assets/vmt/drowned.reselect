@@ -1,0 +1,7 @@
+if drowned.has_name and drowned.name == "Suit" then
+    "minecraft:optifine/random/entity/zombie/drowned2.png"
+
+
+else
+    default
+end

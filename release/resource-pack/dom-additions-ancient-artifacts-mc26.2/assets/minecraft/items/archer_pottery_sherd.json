@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:custom_model_data",
+    "cases": [
+      {
+        "when": "tasty_supplies/raw_bacon",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/raw_bacon"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/archer_pottery_sherd"
+    }
+  }
+}

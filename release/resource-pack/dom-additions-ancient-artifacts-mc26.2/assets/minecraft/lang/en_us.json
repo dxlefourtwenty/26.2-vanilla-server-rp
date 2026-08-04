@@ -66,5 +66,6 @@
 
     "death.attack.shulker_king_lazer": "%1$s is quite cooked due to a powerfull lazer fired from the Shulker King.",
     "death.attack.shulker_king_lazer.player": "%1$s is quite cooked due to a powerfull lazer fired from the Shulker King.",
-    "death.attack.shulker_king_lazer.item": "%1$s is quite cooked due to a powerfull lazer fired from the Shulker King."
+  "death.attack.shulker_king_lazer.item": "%1$s is quite cooked due to a powerfull lazer fired from the Shulker King.",
+  "block.minecraft.test_instance_block": "Rice"
 }

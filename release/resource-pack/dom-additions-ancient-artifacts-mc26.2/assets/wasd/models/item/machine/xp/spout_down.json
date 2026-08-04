@@ -1,0 +1,64 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "wasd:item/machine/blast_furnace_obsidian",
+		"1": "wasd:item/vanilla_assets/obsidian",
+		"particle": "wasd:item/machine/blast_furnace_obsidian"
+	},
+	"elements": [
+		{
+			"from": [7, 2.5, 4.3],
+			"to": [9, 10.5, 6.325],
+			"rotation": {"angle": -45, "axis": "x", "origin": [8, 4, 6]},
+			"faces": {
+				"north": {"uv": [2, 0, 0, 8], "texture": "#1"},
+				"east": {"uv": [2, 0, 0, 8], "texture": "#1"},
+				"south": {"uv": [2, 0, 0, 8], "texture": "#1"},
+				"west": {"uv": [2, 0, 0, 8], "texture": "#1"},
+				"up": {"uv": [0, 2, 2, 0], "texture": "#1"},
+				"down": {"uv": [0, 2, 2, 0], "texture": "#1"}
+			}
+		},
+		{
+			"from": [5, 0, 4],
+			"to": [11, 3.25, 12],
+			"faces": {
+				"north": {"uv": [5, 1, 11, 4.25], "texture": "#0"},
+				"east": {"uv": [4, 1, 12, 4.25], "texture": "#0"},
+				"south": {"uv": [5, 1, 11, 4.25], "texture": "#0"},
+				"west": {"uv": [4, 1, 12, 4.25], "texture": "#0"},
+				"up": {"uv": [5, 4, 11, 12], "texture": "#0"},
+				"down": {"uv": [5, 4, 11, 12], "texture": "#0"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 225, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, -1.75, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"fixed": {
+			"rotation": [-90, 0, 0],
+			"translation": [0, 0, -16],
+			"scale": [2.01, 2.01, 2.01]
+		}
+	}
+}

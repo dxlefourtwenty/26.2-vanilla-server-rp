@@ -1,0 +1,11 @@
+{
+"zelda.frozen_start": {"sounds":[{"name":"wasd:zelda/bow/frozen_start", "volume":1}]},
+"zelda.frozen_end": {"sounds":[{"name":"wasd:zelda/bow/frozen_end", "volume":1}]},
+"zelda.rupee_green": {"sounds": ["wasd:zelda/rupee/rupee_green"]},
+"zelda.rupee_blue": {"sounds": ["wasd:zelda/rupee/rupee_blue"]},
+"zelda.rupee_yellow": {"sounds":["wasd:zelda/rupee/rupee_yellow"]},
+"zelda.rupee_red": {"sounds": ["wasd:zelda/rupee/rupee_red"]},
+"creepah.aw_man": {"sounds":[{"name":"wasd:aw_man", "volume":1.0}]}
+
+
+}

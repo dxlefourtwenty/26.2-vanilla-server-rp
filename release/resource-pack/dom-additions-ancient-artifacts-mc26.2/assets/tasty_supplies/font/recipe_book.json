@@ -1,0 +1,1523 @@
+{
+  "providers": [
+    {
+      "type": "space",
+      "advances": {
+        "\uf001": -1,
+        "\uf101": 1,
+        "\uf002": -2,
+        "\uf102": 2,
+        "\uf003": -3,
+        "\uf103": 3,
+        "\uf004": -4,
+        "\uf104": 4,
+        "\uf005": -5,
+        "\uf105": 5,
+        "\uf006": -6,
+        "\uf106": 6,
+        "\uf007": -7,
+        "\uf107": 7,
+        "\uf008": -8,
+        "\uf108": 8,
+        "\uf009": -9,
+        "\uf109": 9,
+        "\uf00a": -10,
+        "\uf10a": 10,
+        "\uf00b": -11,
+        "\uf10b": 11,
+        "\uf00c": -12,
+        "\uf10c": 12,
+        "\uf00d": -13,
+        "\uf10d": 13,
+        "\uf00e": -14,
+        "\uf10e": 14,
+        "\uf00f": -15,
+        "\uf10f": 15,
+        "\uf010": -16,
+        "\uf110": 16,
+        "\uf011": -17,
+        "\uf111": 17,
+        "\uf012": -18,
+        "\uf112": 18,
+        "\uf013": -19,
+        "\uf113": 19,
+        "\uf014": -20,
+        "\uf114": 20,
+        "\uf015": -21,
+        "\uf115": 21,
+        "\uf016": -22,
+        "\uf116": 22,
+        "\uf017": -23,
+        "\uf117": 23,
+        "\uf018": -24,
+        "\uf118": 24,
+        "\uf019": -25,
+        "\uf119": 25,
+        "\uf01a": -26,
+        "\uf11a": 26,
+        "\uf01b": -27,
+        "\uf11b": 27,
+        "\uf01c": -28,
+        "\uf11c": 28,
+        "\uf01d": -29,
+        "\uf11d": 29,
+        "\uf01e": -30,
+        "\uf11e": 30,
+        "\uf01f": -31,
+        "\uf11f": 31,
+        "\uf020": -32,
+        "\uf120": 32,
+        "\uf021": -33,
+        "\uf121": 33,
+        "\uf022": -34,
+        "\uf122": 34,
+        "\uf023": -35,
+        "\uf123": 35,
+        "\uf024": -36,
+        "\uf124": 36,
+        "\uf025": -37,
+        "\uf125": 37,
+        "\uf026": -38,
+        "\uf126": 38,
+        "\uf027": -39,
+        "\uf127": 39,
+        "\uf028": -40,
+        "\uf128": 40,
+        "\uf029": -41,
+        "\uf129": 41,
+        "\uf02a": -42,
+        "\uf12a": 42,
+        "\uf02b": -43,
+        "\uf12b": 43,
+        "\uf02c": -44,
+        "\uf12c": 44,
+        "\uf02d": -45,
+        "\uf12d": 45,
+        "\uf02e": -46,
+        "\uf12e": 46,
+        "\uf02f": -47,
+        "\uf12f": 47,
+        "\uf030": -48,
+        "\uf130": 48,
+        "\uf031": -49,
+        "\uf131": 49,
+        "\uf032": -50,
+        "\uf132": 50,
+        "\uf033": -51,
+        "\uf133": 51,
+        "\uf034": -52,
+        "\uf134": 52,
+        "\uf035": -53,
+        "\uf135": 53,
+        "\uf036": -54,
+        "\uf136": 54,
+        "\uf037": -55,
+        "\uf137": 55,
+        "\uf038": -56,
+        "\uf138": 56,
+        "\uf039": -57,
+        "\uf139": 57,
+        "\uf03a": -58,
+        "\uf13a": 58,
+        "\uf03b": -59,
+        "\uf13b": 59,
+        "\uf03c": -60,
+        "\uf13c": 60,
+        "\uf03d": -61,
+        "\uf13d": 61,
+        "\uf03e": -62,
+        "\uf13e": 62,
+        "\uf03f": -63,
+        "\uf13f": 63,
+        "\uf040": -64,
+        "\uf140": 64,
+        "\uf041": -65,
+        "\uf141": 65,
+        "\uf042": -66,
+        "\uf142": 66,
+        "\uf043": -67,
+        "\uf143": 67,
+        "\uf044": -68,
+        "\uf144": 68,
+        "\uf045": -69,
+        "\uf145": 69,
+        "\uf046": -70,
+        "\uf146": 70,
+        "\uf047": -71,
+        "\uf147": 71,
+        "\uf048": -72,
+        "\uf148": 72,
+        "\uf049": -73,
+        "\uf149": 73,
+        "\uf04a": -74,
+        "\uf14a": 74,
+        "\uf04b": -75,
+        "\uf14b": 75,
+        "\uf04c": -76,
+        "\uf14c": 76,
+        "\uf04d": -77,
+        "\uf14d": 77,
+        "\uf04e": -78,
+        "\uf14e": 78,
+        "\uf04f": -79,
+        "\uf14f": 79,
+        "\uf050": -80,
+        "\uf150": 80,
+        "\uf051": -81,
+        "\uf151": 81,
+        "\uf052": -82,
+        "\uf152": 82,
+        "\uf053": -83,
+        "\uf153": 83,
+        "\uf054": -84,
+        "\uf154": 84,
+        "\uf055": -85,
+        "\uf155": 85,
+        "\uf056": -86,
+        "\uf156": 86,
+        "\uf057": -87,
+        "\uf157": 87,
+        "\uf058": -88,
+        "\uf158": 88,
+        "\uf059": -89,
+        "\uf159": 89,
+        "\uf05a": -90,
+        "\uf15a": 90,
+        "\uf05b": -91,
+        "\uf15b": 91,
+        "\uf05c": -92,
+        "\uf15c": 92,
+        "\uf05d": -93,
+        "\uf15d": 93,
+        "\uf05e": -94,
+        "\uf15e": 94,
+        "\uf05f": -95,
+        "\uf15f": 95,
+        "\uf060": -96,
+        "\uf160": 96,
+        "\uf061": -97,
+        "\uf161": 97,
+        "\uf062": -98,
+        "\uf162": 98,
+        "\uf063": -99,
+        "\uf163": 99,
+        "\uf064": -100,
+        "\uf164": 100
+      }
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:recipe_book/grid_cooking.png",
+      "height": 74,
+      "ascent": 0,
+      "chars": [
+        "\ue901"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:recipe_book/grid_crafting.png",
+      "height": 74,
+      "ascent": 0,
+      "chars": [
+        "\ue902"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:recipe_book/grid_cutting.png",
+      "height": 74,
+      "ascent": 0,
+      "chars": [
+        "\ue903"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/apple_pie.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue000"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/apple_pie_slice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue001"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/chocolate_pie.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue002"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/chocolate_pie_slice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue003"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/cherry_blossom_pie.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue004"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/cherry_blossom_pie_slice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue005"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/chorus_pie.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue006"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/chorus_pie_slice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue007"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/glow_berry_pie.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue008"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/glow_berry_pie_slice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue009"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/sweet_berry_cheesecake.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue00a"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/sweet_berry_cheesecake_slice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue00b"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/honeyed_apple.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue00c"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/honey_cookie.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue00d"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/sweet_berry_cookie.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue00e"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/croissant.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue00f"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/sweet_roll.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue010"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/ice_cream.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue011"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/melon_popsicle.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue012"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/apple_cider.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue013"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/apple_cider_horn.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue014"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/glow_berry_custard.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue015"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/glow_berry_custard_horn.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue016"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/hot_cocoa.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue017"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/hot_cocoa_horn.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue018"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/melon_juice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue019"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/melon_juice_horn.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue01a"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/magma_gelatin.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue01b"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/baked_tentacle_on_a_stick.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue01c"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/baked_barnacle_thong_on_a_stick.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue01d"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/beef_skewer.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue01e"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/beef_stew.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue01f"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/cheese.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue020"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/cheese_slice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue021"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/fried_egg.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue022"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/fruit_salad.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue023"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/fungus_skewer.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue024"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/mushroom_skewer.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue025"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/nether_salad.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue026"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/potato_fries.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue027"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/stuffed_potato.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue028"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/warped_mutton.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue029"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/kelp_roll.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue02a"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/kelp_roll_slice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue02b"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/salmon_roll.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue02c"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/cod_roll.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue02d"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/guardian_roll.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue02e"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/egg_sandwich.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue02f"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/bacon_sandwich.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue030"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/rabbit_burger.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue031"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/chicken_sandwich.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue032"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/mutton_wrap.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue033"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/hamburger.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue034"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/cheeseburger.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue035"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/fish_burger.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue036"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/sea_stew.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue037"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/seagrass_soup.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue038"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/squid_sandwich.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue039"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/stuffed_nautilus_shell.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue03a"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/seafood_pasta.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue03b"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/ink_pasta.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue03c"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/beetroot_pasta.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue03d"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/vegetable_noodles.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue03e"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/noodle_soup.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue03f"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/butter.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue040"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/pie_crust.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue041"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/ice_cream_cone.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue042"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/wheat_dough.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue043"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/raw_pasta.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue044"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/pasta.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue045"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/raw_bacon.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue046"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/cooked_bacon.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue047"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/raw_cod_slice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue048"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/raw_salmon_slice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue049"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/rice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue04a"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/cooked_rice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue04b"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/cooked_tentacle.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue04c"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/cooked_barnacle_thong.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue04d"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/netherite_knife.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue04e"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/diamond_knife.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue04f"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/golden_knife.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue050"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/iron_knife.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue051"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/copper_knife.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue052"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/flint_knife.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue053"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/netherite_cleaver.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue054"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/diamond_cleaver.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue055"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/golden_cleaver.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue056"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/iron_cleaver.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue057"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/copper_cleaver.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue058"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/stone_cleaver.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue059"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/wooden_cleaver.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue05a"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/farmer_hat.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue05b"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/fisherman_hat.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue05c"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:block/cutting_board.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue05d"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/wheat.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue05e"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/apple.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue05f"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/sugar.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue060"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/cocoa_beans.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue061"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/milk_bucket.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue062"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/honeycomb.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue063"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/chorus_fruit.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue064"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/glow_berries.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue065"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/sweet_berries.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue066"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/honey_bottle.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue067"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/snowball.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue068"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/melon_slice.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue069"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/stick.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue06a"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/glass_bottle.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue06b"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/goat_horn.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue06c"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/egg.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue06d"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/bucket.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue06e"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/magma_cream.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue06f"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/blaze_powder.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue070"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/cooked_beef.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue071"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/bowl.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue072"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/carrot.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue073"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/baked_potato.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue074"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/cooked_mutton.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue075"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/dried_kelp.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue076"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/guardian_tail.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue077"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/bread.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue078"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/kelp.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue079"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/cooked_rabbit.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue07a"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/cooked_chicken.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue07b"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/cooked_cod.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue07c"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/seagrass.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue07d"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/nautilus_shell.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue07e"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/ink_sac.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue07f"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/beetroot.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue080"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/potato.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue081"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/cooked_porkchop.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue082"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/water_bucket.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue083"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/porkchop.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue084"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/cod.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue085"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/salmon.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue086"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/tentacle.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue087"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "tasty_supplies:item/barnacle_thong.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue088"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/diamond.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue089"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/gold_ingot.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue08a"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/iron_ingot.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue08b"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/copper_ingot.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue08c"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/flint.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue08d"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:item/leather.png",
+      "height": 16,
+      "ascent": 16,
+      "chars": [
+        "\ue08e"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "wasd:item/redstone/handheld_transmitter"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 2.25, 1],
+			"scale": [0.38, 0.38, 0.38]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 2.25, 1],
+			"scale": [0.38, 0.38, 0.38]
+		},
+		"firstperson_righthand": {
+			"rotation": [-15.25, -85, 0],
+			"translation": [1.5, 3.5, -0.25],
+			"scale": [0.59, 0.59, 0.59]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-15.25, -85, 0],
+			"translation": [1.5, 3.5, -0.25],
+			"scale": [0.59, 0.59, 0.59]
+		}
+	}
+}

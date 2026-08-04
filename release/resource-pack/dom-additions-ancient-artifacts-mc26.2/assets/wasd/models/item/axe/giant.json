@@ -1,0 +1,42 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "wasd:item/axes/giants"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-35, -90, 0],
+			"translation": [0.5, 20.5, 2],
+			"scale": [4, 4, 4]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [-35, 90, 0],
+			"translation": [0.5, 20.5, 2],
+			"scale": [4, 4, 4]
+		},
+		"firstperson_righthand": {
+			"rotation": [-31, -81, 0],
+			"translation": [6.5, 0.75, -10],
+			"scale": [3.89, 3.89, 3.89]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-31, 81, 0],
+			"translation": [6.5, 0.75, -10],
+			"scale": [3.89, 3.89, 3.89]
+		},
+		"ground": {
+			"rotation": [90, 0, 0],
+			"translation": [0, -1.5, 0],
+			"scale": [3.23, 3.23, 3.23]
+		},
+		"gui": {
+			"scale": [2.5, 2.5, 2.5]
+		},
+		"fixed": {
+			"rotation": [0, -180, 0],
+			"translation": [3, 3.25, -1],
+			"scale": [3.3, 3.3, 3.3]
+		}
+	}
+}

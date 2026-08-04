@@ -1,0 +1,6 @@
+{
+    "parent": "item/crossbow",
+    "textures": {
+        "layer0": "wasd:item/crossbow/burst/crossbow_pulling_0"
+    }
+}

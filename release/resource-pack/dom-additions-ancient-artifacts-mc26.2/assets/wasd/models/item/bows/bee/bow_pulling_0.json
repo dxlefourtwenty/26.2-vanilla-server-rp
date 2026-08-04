@@ -1,0 +1,6 @@
+{
+    "parent": "item/bow",
+    "textures": {
+        "layer0": "wasd:item/bows/bee/bow_pulling_0"
+    }
+}

@@ -1,0 +1,22 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "index": 0,
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "wasd:item/bonsai/pot_empty"
+    },
+    "entries": [
+      {"model": {"type": "minecraft:model","model": "wasd:item/bonsai/pot_empty"},"threshold": 6370301},
+      {"model": {"type": "minecraft:model","model": "wasd:item/bonsai/pot_clay"},"threshold": 6370302},
+      {"model": {"type": "minecraft:model","model": "wasd:item/bonsai/pot_dirt"},"threshold": 6370303},
+      {"model": {"type": "minecraft:model","model": "wasd:item/bonsai/pot_moss"},"threshold": 6370304},
+      {"model": {"type": "minecraft:model","model": "wasd:item/bonsai/pot_mud"},"threshold": 6370305},
+      {"model": {"type": "minecraft:model","model": "wasd:item/bonsai/pot_mycelium"},"threshold": 6370306},
+      {"model": {"type": "minecraft:model","model": "wasd:item/bonsai/pot_podzol"},"threshold": 6370307},
+      {"model": {"type": "minecraft:model","model": "wasd:item/bonsai/pot_sand"},"threshold": 6370308},
+      {"model": {"type": "minecraft:model","model": "wasd:item/bonsai/pot_soul_sand"},"threshold": 6370309}
+    ]
+  }
+}

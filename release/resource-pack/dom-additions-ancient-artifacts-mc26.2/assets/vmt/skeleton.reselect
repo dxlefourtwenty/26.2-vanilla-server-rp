@@ -1,0 +1,27 @@
+if skeleton.has_name and skeleton.name == "Inferno Skeleton" then
+    "minecraft:optifine/random/entity/skeleton/skeleton2.png"
+
+elseif skeleton.has_name and skeleton.name == "Torrential Skeleton" then
+    "minecraft:optifine/random/entity/skeleton/skeleton3.png"
+
+elseif skeleton.has_name and skeleton.name == "Charged Skeleton" then
+    "minecraft:optifine/random/entity/skeleton/skeleton4.png"
+
+elseif skeleton.has_name and skeleton.name == "Terra Skeleton" then
+    "minecraft:optifine/random/entity/skeleton/skeleton5.png"
+    
+elseif skeleton.has_name and skeleton.name == "Metalic Skeleton" then
+    "minecraft:optifine/random/entity/skeleton/skeleton6.png"
+
+elseif skeleton.has_name and skeleton.name == "Tempest Skeleton" then
+    "minecraft:optifine/random/entity/skeleton/skeleton7.png"
+
+elseif skeleton.has_name and skeleton.name == "KFC Chicken" then
+    "minecraft:optifine/random/entity/skeleton/skeleton8.png"
+
+elseif skeleton.has_name and skeleton.name == "Suit" then
+    "minecraft:optifine/random/entity/skeleton/skeleton9.png"
+
+else
+    default
+end

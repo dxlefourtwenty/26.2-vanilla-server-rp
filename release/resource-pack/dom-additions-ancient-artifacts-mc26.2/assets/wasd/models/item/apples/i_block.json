@@ -1,0 +1,13 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "wasd:item/apples/i_block"
+	},
+	"display": {
+		"firstperson_righthand": {
+			"rotation": [-17, 0, 0],
+			"translation": [-0.5, 2, -9.75]
+		}
+	}
+}

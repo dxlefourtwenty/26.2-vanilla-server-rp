@@ -1,0 +1,13 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "item/emerald"
+	},
+	"display": {
+		"head": {
+			"rotation": [90, 0, 0],
+			"scale": [1.61, 1.61, 1.61]
+		}
+	}
+}

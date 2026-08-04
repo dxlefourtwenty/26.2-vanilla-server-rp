@@ -1,0 +1,27 @@
+if piglin_brute.has_name and piglin_brute.name == "Inferno Piglin" then
+    "minecraft:optifine/random/entity/piglin/piglin_brute2.png"
+
+elseif piglin_brute.has_name and piglin_brute.name == "Torrential Piglin" then
+    "minecraft:optifine/random/entity/piglin/piglin_brute3.png"
+
+elseif piglin_brute.has_name and piglin_brute.name == "Charged Piglin" then
+    "minecraft:optifine/random/entity/piglin/piglin_brute4.png"
+
+elseif piglin_brute.has_name and piglin_brute.name == "Terra Piglin" then
+    "minecraft:optifine/random/entity/piglin/piglin_brute5.png"
+    
+elseif piglin_brute.has_name and piglin_brute.name == "Metalic Piglin" then
+    "minecraft:optifine/random/entity/piglin/piglin_brute6.png"
+
+elseif piglin_brute.has_name and piglin_brute.name == "Tempest Piglin" then
+    "minecraft:optifine/random/entity/piglin/piglin_brute7.png"
+
+elseif piglin_brute.has_name and piglin_brute.name == "KFC Chicken" then
+    "minecraft:optifine/random/entity/piglin/piglin_brute8.png"
+
+elseif piglin_brute.has_name and piglin_brute.name == "Suit" then
+    "minecraft:optifine/random/entity/piglin/piglin_brute9.png"
+
+else
+    default
+end

@@ -1,0 +1,47 @@
+{
+  "model": {
+    "type": "select",
+    "property": "custom_model_data",
+    "fallback": {
+      "type": "model",
+      "model": "item/poisonous_potato"
+    },
+    "cases": [
+      {
+        "when": "unbreakable_wand",
+        "model": {
+          "type": "model",
+          "model": "item/unbreakable_wand"
+        }
+      },
+	  {
+        "when": "netherite_wand",
+        "model": {
+          "type": "model",
+          "model": "item/netherite_wand"
+        }
+      },
+      {
+        "when": "diamond_wand",
+        "model": {
+          "type": "model",
+          "model": "item/diamond_wand"
+        }
+      },
+      {
+        "when": "iron_wand",
+        "model": {
+          "type": "model",
+          "model": "item/iron_wand"
+        }
+      },
+      {
+        "when": "stone_wand",
+        "model": {
+          "type": "model",
+          "model": "item/stone_wand"
+        }
+      }
+    ]
+  }
+}

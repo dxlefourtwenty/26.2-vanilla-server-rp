@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:custom_model_data",
+    "cases": [
+      {
+        "when": "tasty_supplies/diamond_knife",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/diamond_knife"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/disc_fragment_5"
+    }
+  }
+}

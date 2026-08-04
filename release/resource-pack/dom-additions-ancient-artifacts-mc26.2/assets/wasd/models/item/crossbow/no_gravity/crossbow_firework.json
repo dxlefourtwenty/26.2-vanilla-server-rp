@@ -1,0 +1,6 @@
+{
+    "parent": "item/crossbow",
+    "textures": {
+        "layer0": "wasd:item/crossbow/no_gravity/crossbow_firework"
+    }
+}

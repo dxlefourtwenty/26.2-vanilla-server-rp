@@ -1,0 +1,27 @@
+if husk.has_name and husk.name == "Inferno Zombie" then
+    "minecraft:optifine/random/entity/zombie/husk2.png"
+
+elseif husk.has_name and husk.name == "Torrential Zombie" then
+    "minecraft:optifine/random/entity/zombie/husk3.png"
+
+elseif husk.has_name and husk.name == "Charged Zombie" then
+    "minecraft:optifine/random/entity/zombie/husk4.png"
+
+elseif husk.has_name and husk.name == "Terra Zombie" then
+    "minecraft:optifine/random/entity/zombie/husk5.png"
+    
+elseif husk.has_name and husk.name == "Metalic Zombie" then
+    "minecraft:optifine/random/entity/zombie/husk6.png"
+
+elseif husk.has_name and husk.name == "Tempest Zombie" then
+    "minecraft:optifine/random/entity/zombie/husk7.png"
+
+elseif husk.has_name and husk.name == "KFC Chicken" then
+    "minecraft:optifine/random/entity/zombie/husk8.png"
+
+elseif husk.has_name and husk.name == "Suit" then
+    "minecraft:optifine/random/entity/zombie/husk9.png"
+
+else
+    default
+end

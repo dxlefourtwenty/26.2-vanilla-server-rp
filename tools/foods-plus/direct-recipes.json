@@ -1,0 +1,102 @@
+{
+  "japanese_curry": {
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+      "minecraft:brown_mushroom",
+      "minecraft:sugar",
+      "minecraft:wheat",
+      "minecraft:potato",
+      [
+        "minecraft:beef",
+        "minecraft:mutton",
+        "minecraft:rabbit"
+      ],
+      "minecraft:carrot",
+      "minecraft:bowl"
+    ]
+  },
+  "green_curry": {
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+      "minecraft:dried_kelp",
+      "minecraft:sugar",
+      "minecraft:milk_bucket",
+      [
+        "minecraft:cod",
+        "minecraft:salmon"
+      ],
+      "minecraft:bowl"
+    ]
+  },
+  "paneer_makhani": {
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+      "minecraft:brown_mushroom",
+      "minecraft:sugar",
+      "minecraft:milk_bucket",
+      "minecraft:milk_bucket",
+      "minecraft:beetroot",
+      "minecraft:bowl"
+    ]
+  },
+  "ramen": {
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+      "minecraft:brown_mushroom",
+      "minecraft:dried_kelp",
+      "#minecraft:eggs",
+      "minecraft:wheat",
+      [
+        "minecraft:porkchop",
+        "minecraft:chicken"
+      ],
+      "minecraft:bowl"
+    ]
+  },
+  "charred_fish": {
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+      [
+        "minecraft:tropical_fish",
+        "minecraft:pufferfish",
+        "minecraft:cod",
+        "minecraft:salmon"
+      ],
+      "minecraft:charcoal"
+    ]
+  },
+  "charred_meat": {
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+      [
+        "minecraft:rabbit",
+        "minecraft:chicken",
+        "minecraft:beef",
+        "minecraft:porkchop",
+        "minecraft:mutton"
+      ],
+      "minecraft:charcoal"
+    ]
+  },
+  "charred_potato": {
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+      "minecraft:potato",
+      "minecraft:charcoal"
+    ]
+  },
+  "naan": {
+    "type": "minecraft:smoking",
+    "category": "food",
+    "cookingtime": 100,
+    "experience": 0.35,
+    "ingredient": "minecraft:bread"
+  }
+}

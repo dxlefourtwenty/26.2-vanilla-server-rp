@@ -10,4 +10,25 @@ https://modrinth.com/datapack/ancient-artifacts-2
 Copyright theblackswitch. Published under CC BY-NC-ND 4.0.
 https://creativecommons.org/licenses/by-nc-nd/4.0/
 
+Builder's Wand Texture 2.1.2 for Minecraft 26.2
+Source archive: Builder.s.Wand.Texture_2.1.2.zip
+The source archive did not include a separate license or credits file.
+
+WASD Resource Pack V7.8.2 for Minecraft 26.1
+Source archive: WASD Resource Pack V7.8.2 MC_26.1.zip
+The bundled WASD terms permit server use but prohibit distributing the
+creator's datapacks, in whole or in part, without express written permission.
+The original terms and installation instructions are included under
+source-pack-docs/wasd/.
+
 This notice does not grant redistribution or derivative-work permission.
+
+Klei's Matcha Flavoured 1.01 for Minecraft 26.2
+Source archive: Matcha_Flavoured.zip
+Foods Plus recipes and textures were adapted from this source.
+The original credits are included as Matcha Flavoured Credits.txt.
+
+Tasty Supplies for Minecraft 26.2
+Source archives: Tasty Supplies - Data Pack.zip and
+Tasty Supplies - Resource Pack.zip
+The source archives did not include separate license or credits files.

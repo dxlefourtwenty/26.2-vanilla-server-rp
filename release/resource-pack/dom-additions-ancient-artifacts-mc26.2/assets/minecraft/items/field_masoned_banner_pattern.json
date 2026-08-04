@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:custom_model_data",
+    "cases": [
+      {
+        "when": "tasty_supplies/cooked_rice",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/cooked_rice"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/field_masoned_banner_pattern"
+    }
+  }
+}

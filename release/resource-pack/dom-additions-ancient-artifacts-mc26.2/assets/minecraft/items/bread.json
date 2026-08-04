@@ -1,0 +1,390 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:custom_model_data",
+    "cases": [
+      {
+        "when": "tasty_supplies/apple_pie",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/apple_pie"
+        }
+      },
+      {
+        "when": "tasty_supplies/apple_pie_slice",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/apple_pie_slice"
+        }
+      },
+      {
+        "when": "tasty_supplies/cherry_blossom_pie",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/cherry_blossom_pie"
+        }
+      },
+      {
+        "when": "tasty_supplies/cherry_blossom_pie_slice",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/cherry_blossom_pie_slice"
+        }
+      },
+      {
+        "when": "tasty_supplies/chocolate_pie",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/chocolate_pie"
+        }
+      },
+      {
+        "when": "tasty_supplies/chocolate_pie_slice",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/chocolate_pie_slice"
+        }
+      },
+      {
+        "when": "tasty_supplies/chorus_pie",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/chorus_pie"
+        }
+      },
+      {
+        "when": "tasty_supplies/chorus_pie_slice",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/chorus_pie_slice"
+        }
+      },
+      {
+        "when": "tasty_supplies/glow_berry_pie",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/glow_berry_pie"
+        }
+      },
+      {
+        "when": "tasty_supplies/glow_berry_pie_slice",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/glow_berry_pie_slice"
+        }
+      },
+      {
+        "when": "tasty_supplies/ice_cream",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/ice_cream"
+        }
+      },
+      {
+        "when": "tasty_supplies/melon_popsicle",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/melon_popsicle"
+        }
+      },
+      {
+        "when": "tasty_supplies/sweet_berry_cheesecake",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/sweet_berry_cheesecake"
+        }
+      },
+      {
+        "when": "tasty_supplies/sweet_berry_cheesecake_slice",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/sweet_berry_cheesecake_slice"
+        }
+      },
+      {
+        "when": "tasty_supplies/honey_cookie",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/honey_cookie"
+        }
+      },
+      {
+        "when": "tasty_supplies/sweet_berry_cookie",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/sweet_berry_cookie"
+        }
+      },
+      {
+        "when": "tasty_supplies/croissant",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/croissant"
+        }
+      },
+      {
+        "when": "tasty_supplies/honeyed_apple",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/honeyed_apple"
+        }
+      },
+      {
+        "when": "tasty_supplies/sweet_roll",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/sweet_roll"
+        }
+      },
+      {
+        "when": "tasty_supplies/magma_gelatin",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/magma_gelatin"
+        }
+      },
+      {
+        "when": "tasty_supplies/baked_tentacle_on_a_stick",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/baked_tentacle_on_a_stick"
+        }
+      },
+      {
+        "when": "tasty_supplies/baked_barnacle_thong_on_a_stick",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/baked_barnacle_thong_on_a_stick"
+        }
+      },
+      {
+        "when": "tasty_supplies/beef_skewer",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/beef_skewer"
+        }
+      },
+      {
+        "when": "tasty_supplies/cod_roll",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/cod_roll"
+        }
+      },
+      {
+        "when": "tasty_supplies/cheese",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/cheese"
+        }
+      },
+      {
+        "when": "tasty_supplies/fruit_salad",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/fruit_salad"
+        }
+      },
+      {
+        "when": "tasty_supplies/fungus_skewer",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/fungus_skewer"
+        }
+      },
+      {
+        "when": "tasty_supplies/kelp_roll",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/kelp_roll"
+        }
+      },
+      {
+        "when": "tasty_supplies/kelp_roll_slice",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/kelp_roll_slice"
+        }
+      },
+      {
+        "when": "tasty_supplies/mushroom_skewer",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/mushroom_skewer"
+        }
+      },
+      {
+        "when": "tasty_supplies/nether_salad",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/nether_salad"
+        }
+      },
+      {
+        "when": "tasty_supplies/potato_fries",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/potato_fries"
+        }
+      },
+      {
+        "when": "tasty_supplies/bacon_sandwich",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/bacon_sandwich"
+        }
+      },
+      {
+        "when": "tasty_supplies/chicken_sandwich",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/chicken_sandwich"
+        }
+      },
+      {
+        "when": "tasty_supplies/egg_sandwich",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/egg_sandwich"
+        }
+      },
+      {
+        "when": "tasty_supplies/rabbit_burger",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/rabbit_burger"
+        }
+      },
+      {
+        "when": "tasty_supplies/hamburger",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/hamburger"
+        }
+      },
+      {
+        "when": "tasty_supplies/cheeseburger",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/cheeseburger"
+        }
+      },
+      {
+        "when": "tasty_supplies/fish_burger",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/fish_burger"
+        }
+      },
+      {
+        "when": "tasty_supplies/guardian_roll",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/guardian_roll"
+        }
+      },
+      {
+        "when": "tasty_supplies/mutton_wrap",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/mutton_wrap"
+        }
+      },
+      {
+        "when": "tasty_supplies/salmon_roll",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/salmon_roll"
+        }
+      },
+      {
+        "when": "tasty_supplies/sea_stew",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/sea_stew"
+        }
+      },
+      {
+        "when": "tasty_supplies/seagrass_soup",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/seagrass_soup"
+        }
+      },
+      {
+        "when": "tasty_supplies/squid_sandwich",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/squid_sandwich"
+        }
+      },
+      {
+        "when": "tasty_supplies/stuffed_potato",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/stuffed_potato"
+        }
+      },
+      {
+        "when": "tasty_supplies/stuffed_nautilus_shell",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/stuffed_nautilus_shell"
+        }
+      },
+      {
+        "when": "tasty_supplies/warped_mutton",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/warped_mutton"
+        }
+      },
+      {
+        "when": "tasty_supplies/seafood_pasta",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/seafood_pasta"
+        }
+      },
+      {
+        "when": "tasty_supplies/ink_pasta",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/ink_pasta"
+        }
+      },
+      {
+        "when": "tasty_supplies/beetroot_pasta",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/beetroot_pasta"
+        }
+      },
+      {
+        "when": "tasty_supplies/vegetable_noodles",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/vegetable_noodles"
+        }
+      },
+      {
+        "when": "tasty_supplies/noodle_soup",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/noodle_soup"
+        }
+      },
+      {
+        "when": "tasty_supplies/ice_cream_cone",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/ice_cream_cone"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/bread"
+    }
+  }
+}

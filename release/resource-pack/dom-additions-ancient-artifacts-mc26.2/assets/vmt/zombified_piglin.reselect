@@ -1,0 +1,7 @@
+if zombified_piglin.has_name and zombified_piglin.name == "Suit" then
+    "minecraft:optifine/random/entity/piglin/zombified_piglin2.png"
+
+
+else
+    default
+end

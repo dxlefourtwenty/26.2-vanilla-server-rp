@@ -1,0 +1,6 @@
+{
+    "parent": "item/bow",
+    "textures": {
+        "layer0": "wasd:item/bows/rainbow/bow"
+    }
+}

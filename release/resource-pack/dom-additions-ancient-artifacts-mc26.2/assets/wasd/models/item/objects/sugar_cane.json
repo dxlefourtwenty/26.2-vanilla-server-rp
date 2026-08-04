@@ -1,0 +1,70 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "block/sugar_cane",
+		"a": "block/sugar_cane"
+	},
+	"elements": [
+		{
+			"from": [5.6, 5.33333, 8],
+			"to": [10.4, 10.66667, 8],
+			"shade": false,
+			"rotation": {"x": 0, "y": 45, "z": 0, "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0}
+			}
+		},
+		{
+			"from": [8, 5.33333, 5.6],
+			"to": [8, 10.66667, 10.4],
+			"shade": false,
+			"rotation": {"x": 0, "y": 45, "z": 0, "origin": [8, 8, 8]},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0}
+			}
+		},
+		{
+			"from": [5.6, 10.66667, 8],
+			"to": [10.4, 16, 8],
+			"shade": false,
+			"rotation": {"x": 0, "y": 45, "z": 0, "origin": [8, 13.33333, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0}
+			}
+		},
+		{
+			"from": [8, 10.66667, 5.6],
+			"to": [8, 16, 10.4],
+			"shade": false,
+			"rotation": {"x": 0, "y": 45, "z": 0, "origin": [8, 13.33333, 8]},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0}
+			}
+		},
+		{
+			"from": [5.6, 0, 8],
+			"to": [10.4, 5.33333, 8],
+			"shade": false,
+			"rotation": {"x": 0, "y": 45, "z": 0, "origin": [8, 2.66667, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0}
+			}
+		},
+		{
+			"from": [8, 0, 5.6],
+			"to": [8, 5.33333, 10.4],
+			"shade": false,
+			"rotation": {"x": 0, "y": 45, "z": 0, "origin": [8, 2.66667, 8]},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#a", "tintindex": 0}
+			}
+		}
+	]
+}

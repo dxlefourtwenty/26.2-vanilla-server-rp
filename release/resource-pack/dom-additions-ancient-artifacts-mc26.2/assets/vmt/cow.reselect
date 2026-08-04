@@ -1,0 +1,33 @@
+if cow.has_name and cow.name == "Ground Beef" then
+    "minecraft:optifine/random/entity/cow/cow2.png"
+
+elseif cow.has_name and cow.name == "Steak" then
+    "minecraft:optifine/random/entity/cow/cow3.png"
+
+elseif cow.has_name and cow.name == "Roast Beef" then
+    "minecraft:optifine/random/entity/cow/cow4.png"
+
+elseif cow.has_name and cow.name == "Space Cow" then
+    "minecraft:optifine/random/entity/cow/cow5.png"
+
+elseif cow.has_name and cow.name == "Milkshake" then
+    "minecraft:optifine/random/entity/cow/cow6.png"
+
+elseif cow.has_name and cow.name == "Whygoo Beef" then
+    "minecraft:optifine/random/entity/cow/cow7.png"
+
+elseif cow.has_name and cow.name == "Cow-ard" then
+    "minecraft:optifine/random/entity/cow/cow8.png"
+
+elseif cow.has_name and cow.name == "Prime Beef" then
+    "minecraft:optifine/random/entity/cow/cow9.png"
+
+elseif cow.has_name and cow.name == "Organic Cow" then
+    "minecraft:optifine/random/entity/cow/cow10.png"
+
+elseif cow.has_name and cow.name == "Rare Beef" then
+    "minecraft:optifine/random/entity/cow/cow11.png"
+
+else
+    default
+end

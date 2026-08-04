@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:custom_model_data",
+    "cases": [
+      {
+        "when": "tasty_supplies/raw_salmon_slice",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/raw_salmon_slice"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/bordure_indented_banner_pattern"
+    }
+  }
+}

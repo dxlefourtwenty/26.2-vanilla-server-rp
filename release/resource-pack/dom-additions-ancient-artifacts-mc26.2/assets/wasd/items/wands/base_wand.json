@@ -1,0 +1,64 @@
+{
+"oversized_in_gui": true,
+  "model": {
+	  "type": "minecraft:range_dispatch",
+	  "property": "minecraft:custom_model_data",
+	  "index": 0,
+	  "fallback": {
+		"type": "minecraft:model",
+		"model": "wasd:item/swords/copper1"
+	  },
+	  "entries": [
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/fireball"},"threshold": 6370101},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/meteor"},"threshold": 6370102},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/flamethrower"},"threshold": 6370103},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/magma"},"threshold": 6370104},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/ice"},"threshold": 6370105},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/ice_spike"},"threshold": 6370106},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/frost"},"threshold": 6370107},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/lightning"},"threshold": 6370108},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/thunder"},"threshold": 6370109},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/electric"},"threshold": 6370110},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/air"},"threshold": 6370111},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/wind"},"threshold": 6370112},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/hurricane"},"threshold": 6370113},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/gust"},"threshold": 6370114},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/rock"},"threshold": 6370115},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/boulder"},"threshold": 6370116},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/earth"},"threshold": 6370117},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/ore"},"threshold": 6370118},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/steel"},"threshold": 6370119},
+
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/dripstone"},"threshold": 6370124},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/anvil"},"threshold": 6370125},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/water"},"threshold": 6370126},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/bubble"},"threshold": 6370127},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/kfc"},"threshold": 6370128},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/feathered"},"threshold": 6370129},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/healing"},"threshold": 6370130},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/growth"},"threshold": 6370131},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/plant"},"threshold": 6370132},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/log"},"threshold": 6370133},
+
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/portal"},"threshold": 6370135},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/undead"},"threshold": 6370136},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/death"},"threshold": 6370137},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/draining"},"threshold": 6370138},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/acid"},"threshold": 6370139},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/shadow"},"threshold": 6370140},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/shadow_walk"},"threshold": 6370141},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/darkness"},"threshold": 6370142},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/dark_sword"},"threshold": 6370143},
+
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/heavenly_light"},"threshold": 6370146},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/orb_of_light"},"threshold": 6370147},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/flash"},"threshold": 6370148},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/sword"},"threshold": 6370149},
+
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/combustion"},"threshold": 6370151},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/flaming_pillar"},"threshold": 6370152},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/wind_cutter"},"threshold": 6370153},
+		{"model": {"type": "minecraft:model","model": "wasd:item/wands/wall"},"threshold": 6370155}
+	  ]
+	}
+  }

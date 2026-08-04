@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "index": 0,
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "wasd:item/swords/copper1"
+    },
+    "entries": [
+      {"model": {"type": "minecraft:model","model": "wasd:item/swords/copper2"},"threshold": 6370002},
+      {"model": {"type": "minecraft:model","model": "wasd:item/swords/copper3"},"threshold": 6370003},
+      {"model": {"type": "minecraft:model","model": "wasd:item/swords/copper4"},"threshold": 6370004}
+    ]
+  }
+}

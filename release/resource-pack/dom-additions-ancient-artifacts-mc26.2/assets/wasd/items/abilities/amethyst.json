@@ -1,0 +1,17 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "index": 0,
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "wasd:item/abilities/amethyst1"
+    },
+    "entries": [
+      {"model": {"type": "minecraft:model","model": "wasd:item/abilities/amethyst1"},"threshold": 6370305},
+      {"model": {"type": "minecraft:model","model": "wasd:item/abilities/amethyst2"},"threshold": 6370306},
+      {"model": {"type": "minecraft:model","model": "wasd:item/abilities/amethyst3"},"threshold": 6370307},
+      {"model": {"type": "minecraft:model","model": "wasd:item/abilities/amethyst4"},"threshold": 6370308}
+    ]
+  }
+}

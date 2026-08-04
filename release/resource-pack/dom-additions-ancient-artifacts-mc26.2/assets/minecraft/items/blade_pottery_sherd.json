@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:custom_model_data",
+    "cases": [
+      {
+        "when": "tasty_supplies/tentacle",
+        "model": {
+          "type": "minecraft:model",
+          "model": "tasty_supplies:item/tentacle"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/blade_pottery_sherd"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+if zombie.has_name and zombie.name == "Suit" then
+    "minecraft:optifine/random/entity/zombie/zombie2.png"
+
+
+else
+    default
+end

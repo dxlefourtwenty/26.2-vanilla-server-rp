@@ -1,0 +1,15 @@
+{
+  "minecraft:enderman_spawn_egg": "minecraft:wheat",
+  "minecraft:shulker_spawn_egg": "minecraft:wheat",
+  "minecraft:breeze_rod": "minecraft:pumpkin",
+  "minecraft:fermented_spider_eye": "minecraft:apple",
+  "minecraft:rabbit_foot": "minecraft:brown_mushroom",
+  "minecraft:mushroom_stew": "minecraft:cocoa_beans",
+  "minecraft:beetroot_soup": "minecraft:milk_bucket",
+  "minecraft:cookie": "minecraft:milk_bucket",
+  "minecraft:rotten_flesh": "minecraft:glow_berries",
+  "minecraft:magma_cream": "minecraft:sweet_berries",
+  "minecraft:glowstone_dust": "minecraft:milk_bucket",
+  "glowstone_dust": "minecraft:milk_bucket",
+  "bread": "minecraft:bread"
+}

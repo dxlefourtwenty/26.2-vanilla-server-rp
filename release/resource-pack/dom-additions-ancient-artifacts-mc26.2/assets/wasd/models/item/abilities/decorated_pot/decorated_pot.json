@@ -1,0 +1,63 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"0": "wasd:item/abilities/blade_pottery_pattern",
+		"1": "wasd:item/abilities/decorated_pot_base",
+		"particle": "wasd:item/abilities/blade_pottery_pattern"
+	},
+	"elements": [
+		{
+			"from": [1, 0, 1],
+			"to": [15, 16, 15],
+			"rotation": {"x": 0, "y": 0, "z": 0, "origin": [1, 0, 1]},
+			"faces": {
+				"north": {"uv": [1, 0, 15, 16], "texture": "#0"},
+				"east": {"uv": [1, 0, 15, 16], "texture": "#0"},
+				"south": {"uv": [1, 0, 15, 16], "texture": "#0"},
+				"west": {"uv": [1, 0, 15, 16], "texture": "#0"},
+				"up": {"uv": [0, 6.5, 7, 13.5], "texture": "#1"},
+				"down": {"uv": [7, 6.5, 14, 13.5], "texture": "#1"}
+			}
+		},
+		{
+			"name": "cube inverted",
+			"from": [15, 16, 15],
+			"to": [1, 0, 1],
+			"rotation": {"x": 0, "y": 0, "z": 0, "origin": [1, 0, 1]},
+			"faces": {
+				"north": {"uv": [1, 16, 15, 0], "texture": "#0"},
+				"east": {"uv": [1, 16, 15, 0], "texture": "#0"},
+				"south": {"uv": [1, 16, 15, 0], "texture": "#0"},
+				"west": {"uv": [1, 16, 15, 0], "texture": "#0"},
+				"up": {"uv": [14, 6.5, 7, 13.5], "texture": "#1"},
+				"down": {"uv": [7, 6.5, 0, 13.5], "texture": "#1"}
+			}
+		},
+		{
+			"from": [5, 16, 5],
+			"to": [11, 17, 11],
+			"rotation": {"x": 0, "y": 0, "z": 0, "origin": [5, 16, 5]},
+			"faces": {
+				"north": {"uv": [0, 5.5, 3.5, 6], "texture": "#1"},
+				"east": {"uv": [3.5, 5.5, 7, 6], "texture": "#1"},
+				"south": {"uv": [8, 5.5, 11.5, 6], "texture": "#1"},
+				"west": {"uv": [8.5, 5.5, 12, 6], "texture": "#1"}
+			}
+		},
+		{
+			"from": [4, 17, 4],
+			"to": [12, 20, 12],
+			"rotation": {"x": 0, "y": 0, "z": 0, "origin": [4, 17, 4]},
+			"faces": {
+				"north": {"uv": [4, 4, 8, 5.5], "texture": "#1"},
+				"east": {"uv": [0, 4, 4, 5.5], "texture": "#1"},
+				"south": {"uv": [12, 4, 16, 5.5], "texture": "#1"},
+				"west": {"uv": [8, 4, 12, 5.5], "texture": "#1"},
+				"up": {"uv": [4, 0, 8, 4], "texture": "#1"},
+				"down": {"uv": [8, 0, 12, 4], "texture": "#1"}
+			}
+		}
+	]
+}

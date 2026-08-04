@@ -1,0 +1,7 @@
+if wither_skeleton.has_name and wither_skeleton.name == "Suit" then
+    "minecraft:optifine/random/entity/skeleton/wither_skeleton2.png"
+
+
+else
+    default
+end

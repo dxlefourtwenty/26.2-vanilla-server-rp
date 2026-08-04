@@ -1,0 +1,864 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+script_directory=$(/usr/bin/dirname "$(/usr/bin/readlink -f "${BASH_SOURCE[0]}")")
+repository_root=$(/usr/bin/dirname "$script_directory")
+recipe_manifest="$script_directory/foods-plus/recipes.txt"
+ingredient_replacement_manifest="$script_directory/foods-plus/ingredient-replacements.json"
+direct_recipe_manifest="$script_directory/foods-plus/direct-recipes.json"
+notice_file="$script_directory/foods-plus/FOODS-PLUS-NOTICE.txt"
+source_archive="$repository_root/Matcha_Flavoured.zip"
+resource_archive="$repository_root/release/resource-pack/dom-additions.zip"
+output_archive="$repository_root/release/server-data-packs/foods-plus.zip"
+data_format='107.1'
+max_nutrition=10
+saturation_ratio='0.6'
+dry_run=false
+force=false
+work_directory=''
+
+declare -A written_items=()
+declare -A written_recipes=()
+declare -a recipe_ids=()
+
+usage() {
+    /usr/bin/printf '%s\n' \
+        "Usage: $0 [options]" \
+        "" \
+        "Options:" \
+        "  --source PATH              Matcha Flavoured source archive" \
+        "  --resource-pack PATH       Resource pack archive to extend" \
+        "  --output PATH              Foods Plus datapack archive" \
+        "  --data-format VERSION      Datapack format (default: 107.1)" \
+        "  --max-nutrition NUMBER     Maximum hunger points per food (default: 10)" \
+        "  --saturation-ratio NUMBER  Saturation per hunger point (default: 0.6)" \
+        "  --dry-run                  Build and validate without replacing outputs" \
+        "  --force                    Replace an existing datapack or Foods Plus assets" \
+        "  --help                     Show this help"
+}
+
+fail() {
+    /usr/bin/printf 'error: %s\n' "$1" >&2
+    exit 1
+}
+
+require_argument() {
+    (($# >= 2)) && [[ -n $2 ]] || fail "$1 requires a value"
+}
+
+parse_arguments() {
+    while (($#)); do
+        case $1 in
+            --source)
+                require_argument "$@"
+                source_archive=$2
+                shift 2
+                ;;
+            --resource-pack)
+                require_argument "$@"
+                resource_archive=$2
+                shift 2
+                ;;
+            --output)
+                require_argument "$@"
+                output_archive=$2
+                shift 2
+                ;;
+            --data-format)
+                require_argument "$@"
+                data_format=$2
+                shift 2
+                ;;
+            --max-nutrition)
+                require_argument "$@"
+                max_nutrition=$2
+                shift 2
+                ;;
+            --saturation-ratio)
+                require_argument "$@"
+                saturation_ratio=$2
+                shift 2
+                ;;
+            --dry-run)
+                dry_run=true
+                shift
+                ;;
+            --force)
+                force=true
+                shift
+                ;;
+            --help|-h)
+                usage
+                exit 0
+                ;;
+            *)
+                fail "unknown argument: $1"
+                ;;
+        esac
+    done
+}
+
+require_command() {
+    command -v "$1" >/dev/null 2>&1 || fail "required command not found: $1"
+}
+
+validate_inputs() {
+    source_archive=$(/usr/bin/readlink -f "$source_archive")
+    resource_archive=$(/usr/bin/readlink -f "$resource_archive")
+    output_archive=$(/usr/bin/readlink -m "$output_archive")
+
+    [[ -f $source_archive ]] || fail "source archive not found: $source_archive"
+    [[ -f $resource_archive ]] || fail "resource pack not found: $resource_archive"
+    [[ -f $recipe_manifest ]] || fail "recipe manifest not found: $recipe_manifest"
+    [[ -f $ingredient_replacement_manifest ]] ||
+        fail "ingredient replacement manifest not found: $ingredient_replacement_manifest"
+    [[ -f $direct_recipe_manifest ]] ||
+        fail "direct recipe manifest not found: $direct_recipe_manifest"
+    [[ -f $notice_file ]] || fail "notice file not found: $notice_file"
+    [[ $source_archive != "$resource_archive" ]] || fail "source and resource archives must differ"
+    [[ $source_archive != "$output_archive" ]] || fail "source and output archives must differ"
+    [[ $resource_archive != "$output_archive" ]] || fail "resource and output archives must differ"
+    [[ $data_format =~ ^[0-9]+([.][0-9]+)?$ ]] || fail "data format must be numeric"
+    [[ $max_nutrition =~ ^[1-9][0-9]*$ ]] || fail "max nutrition must be a positive integer"
+    [[ $saturation_ratio =~ ^[0-9]+([.][0-9]+)?$ ]] || fail "saturation ratio must be non-negative"
+    [[ ! -e $output_archive || $force == true || $dry_run == true ]] ||
+        fail "output already exists; use --force to replace it: $output_archive"
+
+    for command_name in awk chmod cp dirname find grep jq mkdir mktemp readlink rm sort unzip uniq xargs zip zipinfo; do
+        require_command "$command_name"
+    done
+
+    /usr/bin/unzip -tq "$source_archive" >/dev/null
+    /usr/bin/unzip -tq "$resource_archive" >/dev/null
+
+    if /usr/bin/zipinfo -1 "$resource_archive" | /usr/bin/grep -q '^assets/foods_plus/' &&
+        [[ $force == false && $dry_run == false ]]; then
+        fail "resource pack already contains assets/foods_plus; use --force to replace them"
+    fi
+}
+
+cleanup() {
+    if [[ -n $work_directory && -d $work_directory &&
+        $work_directory == /tmp/foods-plus-build.* ]]; then
+        /usr/bin/chmod -R u+w "$work_directory"
+        /usr/bin/rm -rf -- "$work_directory"
+    fi
+}
+
+prepare_work_directory() {
+    work_directory=$(/usr/bin/mktemp -d /tmp/foods-plus-build.XXXXXX)
+    trap cleanup EXIT
+
+    /usr/bin/mkdir -p \
+        "$work_directory/source" \
+        "$work_directory/datapack/data/foods_plus/recipe" \
+        "$work_directory/datapack/data/foods_plus/advancement/aura" \
+        "$work_directory/datapack/data/foods_plus/advancement/recipes" \
+        "$work_directory/datapack/data/foods_plus/function/aura" \
+        "$work_directory/resource-assets/assets/foods_plus/items" \
+        "$work_directory/resource-assets/assets/foods_plus/models/item" \
+        "$work_directory/resource-assets/assets/foods_plus/textures/item" \
+        "$work_directory/resource-pack"
+
+    /usr/bin/unzip -q "$source_archive" -d "$work_directory/source"
+    /usr/bin/unzip -q "$resource_archive" -d "$work_directory/resource-pack"
+}
+
+source_recipe_path() {
+    /usr/bin/printf '%s/data/food/recipe/%s.json\n' "$work_directory/source" "$1"
+}
+
+target_recipe_name() {
+    case $1 in
+        brasied_warped_fungus)
+            /usr/bin/printf 'braised_warped_fungus\n'
+            ;;
+        brasied_warped_fungus_campfire)
+            /usr/bin/printf 'braised_warped_fungus_campfire\n'
+            ;;
+        *)
+            /usr/bin/printf '%s\n' "$1"
+            ;;
+    esac
+}
+
+fallback_item_id() {
+    case $1 in
+        *_campfire)
+            /usr/bin/printf '%s\n' "${1%_campfire}"
+            ;;
+        dough_from_water)
+            /usr/bin/printf 'dough\n'
+            ;;
+        flour_from_flour_bag)
+            /usr/bin/printf 'flour\n'
+            ;;
+        *)
+            /usr/bin/printf '%s\n' "$1"
+            ;;
+    esac
+}
+
+item_id_for_recipe() {
+    local item_model
+    local recipe_name=$1
+    local recipe_path=$2
+
+    item_model=$(/usr/bin/jq -r '.result.components["minecraft:item_model"] // empty' "$recipe_path")
+    if [[ -n $item_model ]]; then
+        /usr/bin/printf '%s\n' "${item_model#*:}"
+    else
+        fallback_item_id "$recipe_name"
+    fi
+}
+
+texture_id_for_item() {
+    case $1 in
+        baked_pumpkin)
+            /usr/bin/printf 'pumpkin_slice\n'
+            ;;
+        cheese)
+            /usr/bin/printf 'cookie\n'
+            ;;
+        milk_bottle)
+            /usr/bin/printf 'beetroot_soup\n'
+            ;;
+        *)
+            /usr/bin/printf '%s\n' "$1"
+            ;;
+    esac
+}
+
+humanize_item_id() {
+    /usr/bin/printf '%s\n' "$1" |
+        /usr/bin/awk -F_ '{
+            for (field = 1; field <= NF; field++) {
+                word = toupper(substr($field, 1, 1)) substr($field, 2)
+                printf "%s%s", field == 1 ? "" : " ", word
+            }
+            printf "\n"
+        }'
+}
+
+translated_display_name() {
+    local recipe_path=$1
+    local translation_key
+
+    translation_key=$(/usr/bin/jq -r '
+        .result.components["minecraft:item_name"].translate
+        // .result.components["minecraft:custom_name"].translate
+        // empty
+    ' "$recipe_path")
+    [[ -n $translation_key ]] || return 1
+
+    /usr/bin/jq -er --arg key "$translation_key" '.[$key] | select(type == "string" and length > 0)' \
+        "$work_directory/source/assets/minecraft/lang/en_us.json"
+}
+
+display_name_for_item() {
+    local item_id=$1
+    local recipe_path=$2
+
+    case $item_id in
+        bruschetta)
+            /usr/bin/printf 'Bruschetta\n'
+            ;;
+        flour_bag)
+            /usr/bin/printf 'Bag of Flour\n'
+            ;;
+        golden_apple_empanada)
+            /usr/bin/printf 'Golden Apple Empanada\n'
+            ;;
+        pickled_tomatoes)
+            /usr/bin/printf 'Pickled Tomatoes\n'
+            ;;
+        uncooked_curry)
+            /usr/bin/printf 'Curry Stock\n'
+            ;;
+        uncooked_green_curry)
+            /usr/bin/printf 'Green Curry Stock\n'
+            ;;
+        uncooked_paneer_makhani)
+            /usr/bin/printf 'Paneer Curry Stock\n'
+            ;;
+        uncooked_ramen)
+            /usr/bin/printf 'Ramen Stock\n'
+            ;;
+        *)
+            translated_display_name "$recipe_path" || humanize_item_id "$item_id"
+            ;;
+    esac
+}
+
+food_nutrition() {
+    local recipe_path=$1
+    local health_value
+    local original_nutrition
+
+    health_value=$(/usr/bin/jq -r '
+        (.result.components["minecraft:lore"][0].text // "")
+        | (([scan("❤")] | length) * 2 + ([scan("❣")] | length))
+    ' "$recipe_path")
+
+    if ((health_value > 0)); then
+        if ((health_value > max_nutrition)); then
+            /usr/bin/printf '%s\n' "$max_nutrition"
+        else
+            /usr/bin/printf '%s\n' "$health_value"
+        fi
+        return
+    fi
+
+    original_nutrition=$(/usr/bin/jq -r '.result.components["minecraft:food"].nutrition // 1' "$recipe_path")
+    if ((original_nutrition > max_nutrition)); then
+        /usr/bin/printf '%s\n' "$max_nutrition"
+    else
+        /usr/bin/printf '%s\n' "$original_nutrition"
+    fi
+}
+
+is_food_recipe() {
+    local recipe_name=$1
+    local recipe_path=$2
+
+    case $recipe_name in
+        pickled_crimson_fungus|pickled_red_mushrooms)
+            return 0
+            ;;
+    esac
+    /usr/bin/jq -e '.result.components["minecraft:food"]' "$recipe_path" >/dev/null
+}
+
+write_recipe() {
+    local display_name=$1
+    local item_id=$2
+    local recipe_name=$3
+    local recipe_path=$4
+    local target_path=$5
+    local edible=false
+    local nutrition=0
+
+    if is_food_recipe "$recipe_name" "$recipe_path"; then
+        edible=true
+        nutrition=$(food_nutrition "$recipe_path")
+    fi
+
+    /usr/bin/jq \
+        --slurpfile ingredient_replacements "$ingredient_replacement_manifest" \
+        --slurpfile direct_recipes "$direct_recipe_manifest" \
+        --arg recipe_name "$recipe_name" \
+        --arg item_model "foods_plus:$item_id" \
+        --arg display_name "$display_name" \
+        --argjson edible "$edible" \
+        --argjson nutrition "$nutrition" \
+        --argjson saturation_ratio "$saturation_ratio" '
+        def replace_input($replacements):
+            if type == "string" then
+                $replacements[.] // .
+            elif type == "array" then
+                map(replace_input($replacements))
+            elif type == "object" then
+                with_entries(.value |= replace_input($replacements))
+            else .
+            end;
+
+        ($ingredient_replacements[0]) as $replacements
+        | ($direct_recipes[0][$recipe_name] // null) as $direct_recipe
+        | if $direct_recipe != null then
+            . as $source_recipe
+            | $direct_recipe + {result: $source_recipe.result}
+          else . end
+        | if has("ingredient") then
+            .ingredient |= replace_input($replacements)
+          else . end
+        | if has("ingredients") then
+            .ingredients |= replace_input($replacements)
+          else . end
+        | if has("key") then
+            .key |= replace_input($replacements)
+          else . end
+        | .result.components["minecraft:item_model"] = $item_model
+        | if .result.components["minecraft:custom_name"] then
+            .result.components["minecraft:custom_name"] |=
+                (. + {text: $display_name} | del(.translate))
+          else
+            .result.components["minecraft:item_name"] = {text: $display_name}
+          end
+        | if $edible then
+            (.result.components["minecraft:potion_contents"].custom_effects // []) as $potion_effects
+            | .result.id = "minecraft:poisonous_potato"
+            | if .result.components["minecraft:food"] == null then
+                .result.components["minecraft:consumable"] = (
+                    {
+                        consume_seconds: 1.6,
+                        animation: "eat",
+                        has_consume_particles: true
+                    }
+                    + if ($potion_effects | length) > 0 then {
+                        on_consume_effects: [{
+                            type: "minecraft:apply_effects",
+                            effects: $potion_effects,
+                            probability: 1
+                        }]
+                      } else {} end
+                )
+                | .result.components["minecraft:use_remainder"] = {
+                    id: "minecraft:glass_bottle"
+                }
+                | del(
+                    .result.components["minecraft:potion_contents"],
+                    .result.components["minecraft:tooltip_display"]
+                )
+              else . end
+            | .result.components["minecraft:food"] = {
+                nutrition: $nutrition,
+                saturation: ($nutrition * $saturation_ratio),
+                can_always_eat: false
+            }
+            | if .result.components["minecraft:consumable"] == null then
+                .result.components["minecraft:consumable"] = {
+                    consume_seconds: 1.6,
+                    animation: "eat",
+                    has_consume_particles: true
+                }
+              else . end
+            | if ((.result.components["minecraft:lore"][0].text // "") | test("[❤❣]")) then
+                .result.components["minecraft:lore"] |= .[1:]
+              else . end
+            | if (.result.components["minecraft:consumable"].on_consume_effects? | type) == "array" then
+                .result.components["minecraft:consumable"].on_consume_effects |= (
+                    map(
+                        if .type == "minecraft:apply_effects" then
+                            .effects |= map(
+                                select(
+                                    .id != "minecraft:regeneration"
+                                    or ((.amplifier // 0) < 2)
+                                )
+                            )
+                        else . end
+                    )
+                    | map(
+                        select(
+                            .type != "minecraft:apply_effects"
+                            or (.effects | length) > 0
+                        )
+                    )
+                )
+                | if (.result.components["minecraft:consumable"].on_consume_effects | length) == 0 then
+                    del(.result.components["minecraft:consumable"].on_consume_effects)
+                  else . end
+              else . end
+          else . end
+    ' "$recipe_path" >"$target_path"
+}
+
+write_resource_asset() {
+    local item_id=$1
+    local texture_id
+    local source_texture
+
+    [[ -z ${written_items[$item_id]+value} ]] || return 0
+    written_items[$item_id]=1
+    texture_id=$(texture_id_for_item "$item_id")
+    source_texture="$work_directory/source/assets/minecraft/textures/item/$texture_id.png"
+    [[ -f $source_texture ]] || fail "missing texture for $item_id: $source_texture"
+
+    /usr/bin/cp "$source_texture" \
+        "$work_directory/resource-assets/assets/foods_plus/textures/item/$item_id.png"
+    /usr/bin/jq -n --arg model "foods_plus:item/$item_id" '{
+        model: {
+            type: "minecraft:model",
+            model: $model
+        }
+    }' >"$work_directory/resource-assets/assets/foods_plus/items/$item_id.json"
+    /usr/bin/jq -n --arg texture "foods_plus:item/$item_id" '{
+        parent: "minecraft:item/generated",
+        textures: {
+            layer0: $texture
+        }
+    }' >"$work_directory/resource-assets/assets/foods_plus/models/item/$item_id.json"
+}
+
+build_recipes_and_assets() {
+    local display_name
+    local item_id
+    local recipe_name
+    local recipe_path
+    local target_name
+    local target_path
+
+    while IFS= read -r recipe_name; do
+        [[ -n $recipe_name ]] || continue
+        recipe_path=$(source_recipe_path "$recipe_name")
+        [[ -f $recipe_path ]] || fail "source recipe not found: $recipe_name"
+        target_name=$(target_recipe_name "$recipe_name")
+        [[ -z ${written_recipes[$target_name]+value} ]] ||
+            fail "duplicate target recipe name: $target_name"
+        written_recipes[$target_name]=1
+        item_id=$(item_id_for_recipe "$recipe_name" "$recipe_path")
+        display_name=$(display_name_for_item "$item_id" "$recipe_path")
+        target_path="$work_directory/datapack/data/foods_plus/recipe/$target_name.json"
+
+        write_recipe "$display_name" "$item_id" "$recipe_name" "$recipe_path" "$target_path"
+        write_resource_asset "$item_id"
+        recipe_ids+=("foods_plus:$target_name")
+    done <"$recipe_manifest"
+}
+
+recipe_ingredient_items() {
+    local recipe_path=$1
+
+    /usr/bin/jq -r '
+        [
+            .ingredient?,
+            (.ingredients? | .. | strings),
+            (.key? | .. | strings)
+        ]
+        | .[]
+        | select(type == "string")
+        | select(startswith("#") | not)
+    ' "$recipe_path"
+}
+
+validate_sensible_recipe_inputs() {
+    local forbidden_item
+    local ingredient_item
+    local recipe_path
+    declare -A forbidden_ingredients=()
+
+    while IFS= read -r forbidden_item; do
+        forbidden_ingredients[$forbidden_item]=1
+    done < <(/usr/bin/jq -r 'keys[]' "$ingredient_replacement_manifest")
+
+    while IFS= read -r recipe_path; do
+        while IFS= read -r ingredient_item; do
+            [[ $ingredient_item != minecraft:*_spawn_egg ]] ||
+                fail "recipe still uses a spawn egg: $recipe_path"
+            [[ $ingredient_item != minecraft:poisonous_potato ]] ||
+                fail "recipe consumes the shared custom item carrier: $recipe_path"
+            [[ -z ${forbidden_ingredients[$ingredient_item]+value} ]] ||
+                fail "recipe still uses a repurposed Matcha ingredient: $ingredient_item"
+            [[ $ingredient_item == *:* ]] ||
+                fail "recipe contains an unnamespaced ingredient: $ingredient_item"
+        done < <(recipe_ingredient_items "$recipe_path")
+
+        /usr/bin/jq -e '
+            .result.id == "minecraft:poisonous_potato"
+            and .result.components["minecraft:food"] != null
+            and .result.components["minecraft:item_model"] != null
+        ' "$recipe_path" >/dev/null ||
+            fail "custom food does not use the poisonous potato strategy: $recipe_path"
+    done < <(
+        /usr/bin/find "$work_directory/datapack/data/foods_plus/recipe" \
+            -type f -name '*.json' -print
+    )
+}
+
+write_pack_metadata() {
+    /usr/bin/jq -n --arg data_format "$data_format" '{
+        pack: {
+            min_format: ($data_format | split(".") | map(tonumber)),
+            max_format: ($data_format | split(".") | map(tonumber)),
+            description: [
+                {text: "Foods Plus", color: "#56be4e"},
+                {text: "\nConventional hunger with Matcha Flavoured bonuses", color: "gray"}
+            ]
+        },
+        id: "foods-plus"
+    }' >"$work_directory/datapack/pack.mcmeta"
+}
+
+write_recipe_unlock_advancement() {
+    /usr/bin/jq -n --args '{
+        criteria: {
+            unlock: {
+                trigger: "minecraft:tick"
+            }
+        },
+        requirements: [["unlock"]],
+        rewards: {
+            recipes: $ARGS.positional
+        }
+    }' "${recipe_ids[@]}" \
+        >"$work_directory/datapack/data/foods_plus/advancement/recipes/unlock_all.json"
+}
+
+validate_recipe_unlock_advancement() {
+    local advancement_path=
+    local expected_count=${#recipe_ids[@]}
+    local recipe_id
+
+    advancement_path="$work_directory/datapack/data/foods_plus/advancement/recipes/unlock_all.json"
+    /usr/bin/jq -e --argjson expected_count "$expected_count" '
+        .criteria.unlock.trigger == "minecraft:tick"
+        and (.rewards.recipes | length == $expected_count)
+        and (.rewards.recipes | unique | length == $expected_count)
+    ' "$advancement_path" >/dev/null ||
+        fail "recipe unlock advancement is incomplete or not immediate"
+
+    for recipe_id in "${recipe_ids[@]}"; do
+        /usr/bin/jq -e --arg recipe_id "$recipe_id" '
+            .rewards.recipes | index($recipe_id) != null
+        ' "$advancement_path" >/dev/null ||
+            fail "recipe missing from unlock advancement: $recipe_id"
+    done
+}
+
+write_aura_advancement() {
+    local aura_name=$1
+    local item_id=$2
+
+    /usr/bin/jq -n \
+        --arg function_id "foods_plus:aura/$aura_name" \
+        --arg item_model "foods_plus:$item_id" '{
+        criteria: {
+            consume: {
+                trigger: "minecraft:consume_item",
+                conditions: {
+                    item: {
+                        components: {
+                            "minecraft:item_model": $item_model
+                        }
+                    }
+                }
+            }
+        },
+        requirements: [["consume"]],
+        rewards: {
+            function: $function_id
+        }
+    }' >"$work_directory/datapack/data/foods_plus/advancement/aura/$aura_name.json"
+}
+
+write_aura_function() {
+    local aura_name=$1
+    local duration=$2
+
+    /usr/bin/printf '%s\n' \
+        'playsound minecraft:block.bell.resonate player @s ~ ~ ~ 2 1' \
+        "execute at @s run effect give @e[distance=0.1..50] minecraft:glowing $duration 0 true" \
+        "advancement revoke @s only foods_plus:aura/$aura_name" \
+        >"$work_directory/datapack/data/foods_plus/function/aura/$aura_name.mcfunction"
+}
+
+write_aura_mechanics() {
+    write_aura_advancement 'glow_mash' 'glow_mash'
+    write_aura_advancement 'glow_jam' 'glow_jam'
+    write_aura_advancement 'glow_berry_crumble' 'glow_berry_crumble'
+    write_aura_function 'glow_mash' 3
+    write_aura_function 'glow_jam' 30
+    write_aura_function 'glow_berry_crumble' 60
+}
+
+finish_datapack_tree() {
+    write_pack_metadata
+    write_recipe_unlock_advancement
+    write_aura_mechanics
+    /usr/bin/cp "$work_directory/source/pack.png" "$work_directory/datapack/pack.png"
+    /usr/bin/cp "$work_directory/source/CREDITS.txt" \
+        "$work_directory/datapack/Matcha Flavoured Credits.txt"
+    /usr/bin/cp "$notice_file" "$work_directory/datapack/FOODS-PLUS-NOTICE.txt"
+}
+
+update_resource_metadata() {
+    local metadata_path="$work_directory/resource-pack/pack.mcmeta"
+    local updated_metadata="$work_directory/resource-pack/pack.mcmeta.updated"
+
+    /usr/bin/jq '
+        .pack.description |= (
+            if type == "array" then
+                if any(.[]; ((.text? // "") | contains("Foods Plus"))) then .
+                else . + [{text: "\nFoods Plus", color: "#56be4e"}]
+                end
+            else
+                [., {text: "\nFoods Plus", color: "#56be4e"}]
+            end
+        )
+    ' "$metadata_path" >"$updated_metadata"
+    /usr/bin/mv "$updated_metadata" "$metadata_path"
+}
+
+update_combined_notice() {
+    local combined_notice="$work_directory/resource-pack/COMBINED-PACK-NOTICE.txt"
+
+    if [[ ! -f $combined_notice ]]; then
+        : >"$combined_notice"
+    fi
+    if ! /usr/bin/grep -Fq "Klei's Matcha Flavoured" "$combined_notice"; then
+        /usr/bin/printf '%s\n' \
+            '' \
+            "Klei's Matcha Flavoured 1.01 for Minecraft 26.2" \
+            'Source archive: Matcha_Flavoured.zip' \
+            'Foods Plus recipes and textures were adapted from this source.' \
+            'The original credits are included as Matcha Flavoured Credits.txt.' \
+            >>"$combined_notice"
+    fi
+}
+
+prepare_resource_pack_tree() {
+    local namespace_path="$work_directory/resource-pack/assets/foods_plus"
+
+    if [[ -e $namespace_path ]]; then
+        [[ $force == true || $dry_run == true ]] ||
+            fail "resource work tree already contains the Foods Plus namespace"
+        /usr/bin/rm -rf -- "$namespace_path"
+    fi
+
+    /usr/bin/cp -R "$work_directory/resource-assets/assets/foods_plus" \
+        "$work_directory/resource-pack/assets/"
+    update_resource_metadata
+    update_combined_notice
+    if [[ ! -f "$work_directory/resource-pack/Matcha Flavoured Credits.txt" ]]; then
+        /usr/bin/cp "$work_directory/source/CREDITS.txt" \
+            "$work_directory/resource-pack/Matcha Flavoured Credits.txt"
+    fi
+}
+
+build_archive() {
+    local source_directory=$1
+    local archive_path=$2
+
+    (
+        cd "$source_directory"
+        /usr/bin/find . -type f -printf '%P\0' |
+            /usr/bin/sort -z |
+            /usr/bin/xargs -0 /usr/bin/zip -q -X "$archive_path"
+    )
+}
+
+validate_json_entries() {
+    local archive_path=$1
+    local entry
+
+    while IFS= read -r entry; do
+        case $entry in
+            *.json|pack.mcmeta)
+                /usr/bin/unzip -p "$archive_path" "$entry" | /usr/bin/jq -e . >/dev/null
+                ;;
+        esac
+    done < <(/usr/bin/zipinfo -1 "$archive_path")
+}
+
+validate_archive() {
+    local archive_path=$1
+    local duplicate_entries
+
+    /usr/bin/unzip -tq "$archive_path" >/dev/null
+    validate_json_entries "$archive_path"
+    duplicate_entries=$(
+        /usr/bin/zipinfo -1 "$archive_path" |
+            /usr/bin/sort |
+            /usr/bin/uniq -d
+    )
+    [[ -z $duplicate_entries ]] || fail "duplicate ZIP entries in $archive_path"
+    /usr/bin/zipinfo -1 "$archive_path" | /usr/bin/grep -Fxq 'pack.mcmeta' ||
+        fail "pack.mcmeta is not at the ZIP root: $archive_path"
+}
+
+validate_datapack_balance() {
+    local recipe_path
+
+    while IFS= read -r recipe_path; do
+        /usr/bin/jq -e --argjson max_nutrition "$max_nutrition" '
+            .result.components["minecraft:food"] as $food
+            | ($food.nutrition >= 1 and $food.nutrition <= $max_nutrition)
+            and ($food.can_always_eat == false)
+            and (
+                [
+                    .result.components["minecraft:consumable"].on_consume_effects[]?
+                    | select(.type == "minecraft:apply_effects")
+                    | .effects[]?
+                    | select(
+                        .id == "minecraft:regeneration"
+                        and ((.amplifier // 0) >= 2)
+                    )
+                ]
+                | length == 0
+            )
+        ' "$recipe_path" >/dev/null ||
+            fail "invalid converted food balance: $recipe_path"
+    done < <(
+        /usr/bin/find "$work_directory/datapack/data/foods_plus/recipe" \
+            -type f -name '*.json' -print |
+            while IFS= read -r recipe_path; do
+                /usr/bin/jq -e '.result.components["minecraft:food"]' "$recipe_path" \
+                    >/dev/null 2>&1 && /usr/bin/printf '%s\n' "$recipe_path"
+            done
+    )
+}
+
+validate_resource_assets() {
+    local item_id
+    local item_path
+    local model_path
+    local texture_path
+
+    for item_id in "${!written_items[@]}"; do
+        item_path="$work_directory/resource-pack/assets/foods_plus/items/$item_id.json"
+        model_path="$work_directory/resource-pack/assets/foods_plus/models/item/$item_id.json"
+        texture_path="$work_directory/resource-pack/assets/foods_plus/textures/item/$item_id.png"
+        [[ -f $item_path ]] || fail "missing resource item definition: $item_id"
+        [[ -f $model_path ]] || fail "missing resource item model: $item_id"
+        [[ -s $texture_path ]] || fail "missing resource item texture: $item_id"
+    done
+}
+
+install_outputs() {
+    /usr/bin/mkdir -p "$(/usr/bin/dirname "$output_archive")"
+    /usr/bin/cp "$work_directory/foods-plus.zip" "$output_archive"
+    /usr/bin/cp "$work_directory/dom-additions.zip" "$resource_archive"
+}
+
+print_summary() {
+    local edible_count
+
+    edible_count=$(
+        /usr/bin/find "$work_directory/datapack/data/foods_plus/recipe" \
+            -type f -name '*.json' -print |
+            while IFS= read -r recipe_path; do
+                /usr/bin/jq -r '
+                    select(.result.components["minecraft:food"])
+                    | .result.components["minecraft:item_model"]
+                ' "$recipe_path"
+            done |
+            /usr/bin/sort -u |
+            /usr/bin/awk 'END {print NR + 0}'
+    )
+
+    /usr/bin/printf '%s\n' \
+        "recipes: ${#recipe_ids[@]}" \
+        "edible foods and drinks: $edible_count" \
+        "custom item assets: ${#written_items[@]}" \
+        "nutrition cap: $max_nutrition" \
+        "saturation ratio: $saturation_ratio"
+    if [[ $dry_run == true ]]; then
+        /usr/bin/printf 'dry-run: outputs validated without replacement\n'
+    else
+        /usr/bin/printf 'datapack: %s\nresource pack: %s\n' \
+            "$output_archive" "$resource_archive"
+    fi
+}
+
+main() {
+    parse_arguments "$@"
+    validate_inputs
+    prepare_work_directory
+    build_recipes_and_assets
+    validate_sensible_recipe_inputs
+    finish_datapack_tree
+    validate_recipe_unlock_advancement
+    prepare_resource_pack_tree
+    validate_datapack_balance
+    validate_resource_assets
+    build_archive "$work_directory/datapack" "$work_directory/foods-plus.zip"
+    build_archive "$work_directory/resource-pack" "$work_directory/dom-additions.zip"
+    validate_archive "$work_directory/foods-plus.zip"
+    validate_archive "$work_directory/dom-additions.zip"
+
+    if [[ $dry_run == false ]]; then
+        install_outputs
+    fi
+    print_summary
+}
+
+main "$@"
